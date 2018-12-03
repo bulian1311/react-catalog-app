@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
+import Logo from './Logo';
+import CatalogButton from './CatalogButton';
 
 export class Home extends Component {
   render() {
     return (
-      <div>
+      <div className="landing">
         <Navbar />
         <section>
-          <img
-            class="img-fluid d-block mx-auto"
-            src="http://placehold.it/200x200&text=Logo"
-            alt=""
-          />
+          <Logo />
           <div className="container">
             <div className="row">
               <div className="col-lg-6">
@@ -25,6 +23,7 @@ export class Home extends Component {
               </div>
             </div>
           </div>
+          <CatalogButton />
         </section>
       </div>
     );
