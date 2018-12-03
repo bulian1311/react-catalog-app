@@ -1,6 +1,5 @@
 .landing {
-  background: url('http://placehold.it/1920x1080') no-repeat center center fixed;
+  background: url('/img/fon.jpg') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
-  color: white;
 }
