@@ -11,7 +11,7 @@ export class Home extends Component {
         <section>
           <Logo />
           <div className="container">
-            <div class="jumbotron mt-5">
+            <div className="jumbotron mt-5">
               <h1 className="text-center">Navbar example</h1>
               <p className="lead text-center">
                 This example is a quick exercise to illustrate how the

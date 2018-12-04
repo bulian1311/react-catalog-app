@@ -6,7 +6,7 @@ import reduxThunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 
 import reducers from './reducers';
-import Router from './Router';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +20,7 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Router />
+      <App />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

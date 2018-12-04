@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import ProductList from './ProductList';
 import Sidebar from './Sidebar';
@@ -8,7 +9,6 @@ export class Catalog extends Component {
     return (
       <div className="catalog">
         <Sidebar />
-
         <Navbar />
         <ProductList />
       </div>
@@ -16,4 +16,10 @@ export class Catalog extends Component {
   }
 }
 
-export default Catalog;
+const mapStateToProps = state => {
+  console.log(state);
+
+  return { products: state.products };
+};
+
+export default connect(mapStateToProps)(Catalog);

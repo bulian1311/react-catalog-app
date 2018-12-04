@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export class Navbar extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <button
           className="btn btn-outline-light mr-5"
           type="button"
