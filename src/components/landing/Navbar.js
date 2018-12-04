@@ -27,9 +27,9 @@ export class Nav extends Component {
                   exact
                   className="nav-link"
                   activeClassName="active"
-                  to="/"
+                  to="/catalog"
                 >
-                  Домой
+                  Каталог
                 </NavLink>
               </li>
               <li className="nav-item">

@@ -3,3 +3,7 @@
   background-size: cover;
   height: 100vh;
 }
+
+.product-item {
+  margin-bottom: 30px;
+}
