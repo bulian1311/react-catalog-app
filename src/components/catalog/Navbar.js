@@ -26,7 +26,7 @@ export class Navbar extends Component {
         </form>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link exact className="nav-link" to="/">
+            <Link className="nav-link" to="/">
               Домой
             </Link>
           </li>

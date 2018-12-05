@@ -1,57 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ProductItem from './ProductItem';
 
 export class ProductList extends Component {
-  renderList = () => {};
+  state = { visible: 12 };
+
+  renderList = data => {
+    let products = [];
+
+    if (data) {
+      products = data;
+    } else {
+      products = this.props.store;
+    }
+
+    return products.slice(0, this.state.visible).map(product => {
+      return <ProductItem key={product._id} product={product} />;
+    });
+  };
 
   render() {
     return (
       <div className="container mt-5">
         <div className="row">
-          <ProductItem
-            product={{
-              title: 'Test',
-              price: '12 000 Р',
-              description:
-                'test test test test test test test test test test test test test test test test test '
-            }}
-          />
-          <ProductItem
-            product={{
-              title: 'Test',
-              price: '123',
-              description:
-                'test test test test test test test test test test test test test test test test test '
-            }}
-          />
-          <ProductItem
-            product={{
-              title: 'Test',
-              price: '123',
-              description:
-                'test test test test test test test test test test test test test test test test test '
-            }}
-          />
-          <ProductItem
-            product={{
-              title: 'Test',
-              price: '123',
-              description:
-                'test test test test test test test test test test test test test test test test test '
-            }}
-          />
-          <ProductItem
-            product={{
-              title: 'Test',
-              price: '123',
-              description:
-                'test test test test test test test test test test test test test test test test test '
-            }}
-          />
+          {this.props.store ? this.renderList() : 'Loadind...'}
         </div>
       </div>
     );
   }
 }
 
-export default ProductList;
+const mapStateToProps = state => {
+  return { store: state.products.store };
+};
+
+export default connect(mapStateToProps)(ProductList);
