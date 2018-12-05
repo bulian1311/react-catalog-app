@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <button
           className="btn btn-outline-light mr-5"
           type="button"
@@ -16,7 +16,7 @@ export class Navbar extends Component {
         >
           Фильтр
         </button>
-        <form className="form-inline w-50">
+        <form className="form-inline w-75">
           <input
             className="form-control mr-sm-2 w-100"
             type="text"
@@ -26,23 +26,9 @@ export class Navbar extends Component {
         </form>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <NavLink exact className="nav-link" activeClassName="active" to="/">
+            <Link exact className="nav-link" to="/">
               Домой
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="active" to="/about">
-              О нас
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/contact"
-            >
-              Контакты
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </nav>

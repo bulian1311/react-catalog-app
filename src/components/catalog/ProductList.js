@@ -11,6 +11,7 @@ export class ProductList extends Component {
           <ProductItem
             product={{
               title: 'Test',
+              price: '12 000 Р',
               description:
                 'test test test test test test test test test test test test test test test test test '
             }}
@@ -18,6 +19,7 @@ export class ProductList extends Component {
           <ProductItem
             product={{
               title: 'Test',
+              price: '123',
               description:
                 'test test test test test test test test test test test test test test test test test '
             }}
@@ -25,6 +27,7 @@ export class ProductList extends Component {
           <ProductItem
             product={{
               title: 'Test',
+              price: '123',
               description:
                 'test test test test test test test test test test test test test test test test test '
             }}
@@ -32,6 +35,7 @@ export class ProductList extends Component {
           <ProductItem
             product={{
               title: 'Test',
+              price: '123',
               description:
                 'test test test test test test test test test test test test test test test test test '
             }}
@@ -39,6 +43,7 @@ export class ProductList extends Component {
           <ProductItem
             product={{
               title: 'Test',
+              price: '123',
               description:
                 'test test test test test test test test test test test test test test test test test '
             }}

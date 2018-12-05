@@ -12,14 +12,14 @@ const ProductItem = props => {
           />
         </a>
         <div className="card-body">
-          <h4 className="card-title">{props.product.title}</h4>
-          <p className="card-text">{props.product.description}</p>
-
+          <h4 className="card-title">
+            <a href="/"> {props.product.title}</a>
+          </h4>
+          <h5 className="float-right">{props.product.price}</h5>
+          <br />
+          <br />
           <a href="/" className="btn btn-outline-success btn-sm">
-            В корзину
-          </a>
-          <a href="/" className="btn btn-outline-primary btn-sm float-right">
-            Подробнее
+            Добавить в корзину
           </a>
         </div>
       </div>

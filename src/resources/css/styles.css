@@ -1,9 +1,32 @@
 .landing {
   background: url('/img/fon.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
+}
+
+.fon {
+  background: url('/img/fon.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.fon-footer {
+  background: url('/img/fon_footer.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .product-item {
   margin-bottom: 30px;
+}
+
+header {
+  padding: 50px 0 50px;
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 70px 0 100px;
+  }
+}
+
+section {
+  padding: 150px 0;
 }
