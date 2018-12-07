@@ -5,16 +5,26 @@ import {
   fetchProductStore,
   fetchProductShow,
   fetchTags,
-  fetchProducers
+  fetchProducers,
+  storeToShow
 } from '../actions';
 import { withRouter } from 'react-router-dom';
 
 export class App extends Component {
-  componentWillMount = () => {
-    this.props.dispatch(fetchProductStore());
-    this.props.dispatch(fetchProductShow());
-    this.props.dispatch(fetchTags());
-    this.props.dispatch(fetchProducers());
+  componentDidMount = () => {
+    const { dispatch } = this.props;
+
+    dispatch(fetchProductStore());
+    dispatch(fetchProductShow());
+    dispatch(fetchTags());
+    dispatch(fetchProducers());
+  };
+
+  componentDidUpdate = () => {
+    const { dispatch, store } = this.props;
+    if (store) {
+      dispatch(storeToShow(store));
+    }
   };
 
   render() {
@@ -22,4 +32,8 @@ export class App extends Component {
   }
 }
 
-export default withRouter(connect()(App));
+const mapStateToProps = state => {
+  return { store: state.products.store };
+};
+
+export default withRouter(connect(mapStateToProps)(App));
