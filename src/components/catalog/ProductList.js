@@ -11,7 +11,7 @@ export class ProductList extends Component {
     if (data) {
       products = data;
     } else {
-      products = this.props.store;
+      products = this.props.show;
     }
 
     return products.slice(0, this.state.visible).map(product => {
@@ -19,11 +19,21 @@ export class ProductList extends Component {
     });
   };
 
+  renderLoading = () => {
+    return (
+      <img
+        className="img-fluid d-block mx-auto mb-5"
+        src="/img/loader.gif"
+        alt=""
+      />
+    );
+  };
+
   render() {
     return (
       <div className="container mt-5">
         <div className="row">
-          {this.props.store ? this.renderList() : 'Loadind...'}
+          {this.props.show ? this.renderList() : this.renderLoading()}
         </div>
       </div>
     );
@@ -31,7 +41,10 @@ export class ProductList extends Component {
 }
 
 const mapStateToProps = state => {
-  return { store: state.products.store };
+  return {
+    store: state.products.store,
+    show: state.products.show
+  };
 };
 
 export default connect(mapStateToProps)(ProductList);
