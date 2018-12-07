@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import Router from '../Router';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../actions';
+import {
+  fetchProductStore,
+  fetchProductShow,
+  fetchTags,
+  fetchProducers
+} from '../actions';
 import { withRouter } from 'react-router-dom';
 
 export class App extends Component {
   componentWillMount = () => {
-    this.props.dispatch(fetchProducts());
+    this.props.dispatch(fetchProductStore());
+    this.props.dispatch(fetchProductShow());
+    this.props.dispatch(fetchTags());
+    this.props.dispatch(fetchProducers());
   };
 
   render() {

@@ -17,7 +17,7 @@ export class Catalog extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.products);
+  console.log(state);
 
   return { products: state.products };
 };
