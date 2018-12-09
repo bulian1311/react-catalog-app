@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <button
           className="btn btn-outline-light mr-5"
           type="button"

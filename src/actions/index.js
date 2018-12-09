@@ -4,7 +4,8 @@ import {
   FETCH_PRODUCTS_SHOW,
   FETCH_TAGS,
   FETCH_PRODUCERS,
-  STORE_TO_SHOW
+  STORE_TO_SHOW,
+  LOAD_MORE
 } from './types';
 
 const api = axios.create({ baseURL: 'http://magmer-api.herokuapp.com/' });
@@ -35,4 +36,8 @@ export const fetchProducers = () => async dispatch => {
 
 export const storeToShow = store => dispatch => {
   dispatch({ type: STORE_TO_SHOW, payload: store });
+};
+
+export const loadMore = () => dispatch => {
+  dispatch({ type: LOAD_MORE, payload: 16 });
 };
