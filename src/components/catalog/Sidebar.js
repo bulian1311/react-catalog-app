@@ -6,7 +6,7 @@ export class Sidebar extends Component {
     const { tags } = this.props;
     return tags.map(tag => {
       return (
-        <div key={tag._id} className="form-check form-check-inline">
+        <div key={tag._id} className="col-lg-4 form-check">
           <input
             className="form-check-input"
             type="checkbox"
@@ -25,7 +25,7 @@ export class Sidebar extends Component {
     const { producers } = this.props;
     return producers.map(producer => {
       return (
-        <div key={producer._id} className="form-check form-check-inline">
+        <div key={producer._id} className="col-lg-4 form-check">
           <input
             className="form-check-input"
             type="checkbox"
@@ -44,11 +44,17 @@ export class Sidebar extends Component {
     return (
       <div className="collapse text-light" id="navbarToggleExternalContent">
         <div className="bg-primary p-4">
-          <h5 className="text-white h4">Поставщики:</h5>
-          {this.props.producers ? this.renderProducers() : ''}
-          <hr />
-          <h5 className="text-white h4">Категории:</h5>
-          {this.props.tags ? this.renderTags() : ''}
+          <div className="container">
+            <div className="row">
+              <h5 className="text-white h4 col-lg-12">Поставщики:</h5>
+              {this.props.producers ? this.renderProducers() : ''}
+            </div>
+            <hr />
+            <div className="row">
+              <h5 className="text-white h4 col-lg-12">Категории:</h5>
+              {this.props.tags ? this.renderTags() : ''}
+            </div>
+          </div>
         </div>
       </div>
     );
