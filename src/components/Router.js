@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Catalog from './components/catalog/Catalog';
+import Catalog from './catalog';
 
-import Landing from './components/landing/Landing';
+import Landing from './landing';
 
 const Router = () => {
   return (

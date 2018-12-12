@@ -39,5 +39,5 @@ export const storeToShow = store => dispatch => {
 };
 
 export const loadMore = () => dispatch => {
-  dispatch({ type: LOAD_MORE, payload: 16 });
+  dispatch({ type: LOAD_MORE, payload: 15 });
 };

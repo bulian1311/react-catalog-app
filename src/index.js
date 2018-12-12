@@ -14,6 +14,7 @@ import 'jquery/dist/jquery.min.js';
 import 'popper.js/dist/popper.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './resources/css/styles.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 

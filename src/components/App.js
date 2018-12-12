@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Router from '../Router';
+import Router from './Router';
 import { connect } from 'react-redux';
 import {
   fetchProductStore,

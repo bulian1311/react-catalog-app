@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProductItem from './ProductItem';
+import Sidebar from './Sidebar';
+import Search from './Search';
+import Filter from './Filter';
 import { loadMore } from '../../actions';
 
 export class ProductList extends Component {
@@ -34,22 +37,32 @@ export class ProductList extends Component {
     }
 
     return (
-      <button
+      <div
         onClick={() => this.props.dispatch(loadMore())}
-        type="button"
         className="btn btn-outline-success btn-block mb-5 ml-3 mr-3"
       >
-        Загрузить еще
-      </button>
+        <i className="fas fa-caret-down fa-lg mr-2" />
+        <b>Загрузить еще</b>
+      </div>
     );
   };
 
   render() {
     return (
-      <div className="container mt-5">
+      <div className="container mt-3">
         <div className="row">
-          {this.props.show ? this.renderList() : this.renderLoading()}
-          {this.props.show ? this.renderLoadMore() : ''}
+          <Search />
+          <div className="col-lg-3">
+            <Sidebar />
+          </div>
+
+          <div className="col-lg-9">
+            <Filter />
+            <div className="row">
+              {this.props.show ? this.renderList() : this.renderLoading()}
+              {this.props.show ? this.renderLoadMore() : ''}
+            </div>
+          </div>
         </div>
       </div>
     );
