@@ -17,7 +17,7 @@ export const fetchProductStore = () => async dispatch => {
 };
 
 export const fetchProductShow = () => async dispatch => {
-  const res = await api.get('/product/list/12');
+  const res = await api.get('/product/list/15');
 
   dispatch({ type: FETCH_PRODUCTS_SHOW, payload: res.data });
 };

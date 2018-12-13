@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Navbar from './Navbar';
+import Navbar from '../common/Navbar';
 import ProductList from './ProductList';
 
 export class Catalog extends Component {

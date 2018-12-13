@@ -1,34 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from '../common/Navbar';
 
 export class Landing extends Component {
   render() {
     return (
       <div>
-        <header className="bg-primary text-white">
-          <img
-            className="img-fluid d-block mx-auto mb-5"
-            src="/img/logo.png"
-            alt=""
-          />
-          <div className="container text-center">
-            <h1>Welcome to Scrolling Nav</h1>
-            <p className="lead">
-              A landing page template freshly redesigned for Bootstrap 4
-            </p>
-            <div className="d-flex justify-content-center">
-              <Link className="btn btn-outline-light btn-lg mt-5" to="/catalog">
-                Перейти в каталог
-              </Link>
-            </div>
-          </div>
-        </header>
+        <Navbar />
 
         <section className="fon" id="about">
           <div className="container">
             <div className="row">
               <div className="col-lg-10 mx-auto">
                 <div className="jumbotron">
+                  <img
+                    className="img-fluid d-block mx-auto mb-5"
+                    src="/img/logo.png"
+                    alt="Magmer"
+                  />
                   <h2>About this page</h2>
                   <p className="lead">
                     This is a great place to talk about your webpage. This
@@ -53,6 +42,14 @@ export class Landing extends Component {
                       unique design options
                     </li>
                   </ul>
+                  <div className="d-flex justify-content-center">
+                    <Link
+                      className="btn btn-outline-primary btn-lg mt-5"
+                      to="/catalog"
+                    >
+                      Перейти в каталог
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

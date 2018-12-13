@@ -1,11 +1,11 @@
 .landing {
   background: url('/img/fon.jpg') no-repeat center center fixed;
-  background-size: cover;
+  /*background-size: cover;*/
 }
 
 .fon {
   background: url('/img/fon.jpg') no-repeat center center fixed;
-  background-size: cover;
+  /* background-size: cover;  */
 }
 
 .fon-footer {

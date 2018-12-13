@@ -13,14 +13,15 @@ export class Filter extends Component {
           </b>
           <form className="form-inline">
             <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-              <i className="fas fa-filter" />
-              <b>Фильтр</b>
+              <i className="fas fa-sort-amount-down fa-lg ml-1 mr-1" />
+              <b>Сортировать</b>
             </label>
             <select
               className="custom-select custom-select-sm my-1 mr-sm-2"
               id="inlineFormCustomSelectPref"
             >
               <option defaultValue>Выбрать...</option>
+
               <option value="1">По цене</option>
               <option value="2">По алфавиту</option>
             </select>
