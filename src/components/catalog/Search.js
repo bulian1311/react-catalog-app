@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import {
   searchHandler,
   searchByTitle,
-  searchByDescription
+  searchByDescription,
+  searchQuery
 } from '../../actions';
 
 export class Search extends Component {
   search = e => {
     const { dispatch, store, handler } = this.props;
     const query = e.target.value;
+    dispatch(searchQuery(query));
 
     if (handler === 'title') {
       dispatch(searchByTitle(query, store));
@@ -20,7 +22,7 @@ export class Search extends Component {
   };
 
   render() {
-    const { dispatch } = this.props;
+    const { dispatch, query } = this.props;
 
     return (
       <div className="input-group mb-3 mr-3 ml-3">
@@ -34,6 +36,7 @@ export class Search extends Component {
         </div>
         <input
           onChange={this.search}
+          value={query}
           type="text"
           placeholder="Поиск..."
           className="form-control w-50"
@@ -56,7 +59,11 @@ export class Search extends Component {
 }
 
 const mapStateToProps = state => {
-  return { store: state.products.store, handler: state.search.handler };
+  return {
+    store: state.products.store,
+    handler: state.search.handler,
+    query: state.search.query
+  };
 };
 
 export default connect(mapStateToProps)(Search);

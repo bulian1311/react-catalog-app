@@ -5,8 +5,7 @@ import {
   fetchProductStore,
   fetchProductShow,
   fetchTags,
-  fetchProducers,
-  storeToShow
+  fetchProducers
 } from '../actions';
 import { withRouter } from 'react-router-dom';
 
@@ -18,13 +17,6 @@ export class App extends Component {
     dispatch(fetchProductShow());
     dispatch(fetchTags());
     dispatch(fetchProducers());
-  };
-
-  componentDidUpdate = () => {
-    const { dispatch, store } = this.props;
-    if (store) {
-      dispatch(storeToShow(store));
-    }
   };
 
   render() {

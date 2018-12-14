@@ -4,9 +4,9 @@ import {
   FETCH_PRODUCTS_SHOW,
   FETCH_TAGS,
   FETCH_PRODUCERS,
-  STORE_TO_SHOW,
   LOAD_MORE,
   SEARCH_HANDLER,
+  SEARCH_QUERY,
   SEARCH_BY_TITLE,
   SEARCH_BY_DESCRIPTION
 } from './types';
@@ -37,16 +37,16 @@ export const fetchProducers = () => async dispatch => {
   dispatch({ type: FETCH_PRODUCERS, payload: res.data });
 };
 
-export const storeToShow = store => dispatch => {
-  dispatch({ type: STORE_TO_SHOW, payload: store });
-};
-
 export const loadMore = () => dispatch => {
   dispatch({ type: LOAD_MORE, payload: 15 });
 };
 
 export const searchHandler = value => dispatch => {
   dispatch({ type: SEARCH_HANDLER, payload: value });
+};
+
+export const searchQuery = value => dispatch => {
+  dispatch({ type: SEARCH_QUERY, payload: value });
 };
 
 export const searchByTitle = (query, products) => dispatch => {
