@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import {
+  searchHandler,
+  searchByTitle,
+  searchByDescription
+} from '../../actions';
 
 export class Search extends Component {
+  search = e => {
+    const { dispatch, store, handler } = this.props;
+    const query = e.target.value;
+
+    if (handler === 'title') {
+      dispatch(searchByTitle(query, store));
+    } else if (handler === 'description') {
+      dispatch(searchByDescription(query, store));
+    }
+  };
+
   render() {
+    const { dispatch } = this.props;
+
     return (
       <div className="input-group mb-3 mr-3 ml-3">
         <div className="input-group-prepend">
@@ -13,15 +33,30 @@ export class Search extends Component {
           </span>
         </div>
         <input
+          onChange={this.search}
           type="text"
           placeholder="Поиск..."
-          className="form-control"
+          className="form-control w-50"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default"
         />
+        <select
+          className="custom-select"
+          id="inputGroupSelect01"
+          onChange={e => dispatch(searchHandler(e.target.value))}
+        >
+          <option defaultValue value="title">
+            Искать по названию
+          </option>
+          <option value="description">Искать по описанию</option>
+        </select>
       </div>
     );
   }
 }
 
-export default Search;
+const mapStateToProps = state => {
+  return { store: state.products.store, handler: state.search.handler };
+};
+
+export default connect(mapStateToProps)(Search);

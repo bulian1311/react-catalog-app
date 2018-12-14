@@ -5,7 +5,10 @@ import {
   FETCH_TAGS,
   FETCH_PRODUCERS,
   STORE_TO_SHOW,
-  LOAD_MORE
+  LOAD_MORE,
+  SEARCH_HANDLER,
+  SEARCH_BY_TITLE,
+  SEARCH_BY_DESCRIPTION
 } from './types';
 
 const api = axios.create({ baseURL: 'http://magmer-api.herokuapp.com/' });
@@ -40,4 +43,26 @@ export const storeToShow = store => dispatch => {
 
 export const loadMore = () => dispatch => {
   dispatch({ type: LOAD_MORE, payload: 15 });
+};
+
+export const searchHandler = value => dispatch => {
+  dispatch({ type: SEARCH_HANDLER, payload: value });
+};
+
+export const searchByTitle = (query, products) => dispatch => {
+  const show = products.filter(product => {
+    const title = product.title.toLowerCase();
+    return title.includes(query.toLowerCase());
+  });
+
+  dispatch({ type: SEARCH_BY_TITLE, payload: show });
+};
+
+export const searchByDescription = (query, products) => dispatch => {
+  const show = products.filter(product => {
+    const description = product.description.toLowerCase();
+    return description.includes(query.toLowerCase());
+  });
+
+  dispatch({ type: SEARCH_BY_DESCRIPTION, payload: show });
 };
