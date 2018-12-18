@@ -8,7 +8,8 @@ import {
   SEARCH_HANDLER,
   SEARCH_QUERY,
   SEARCH_BY_TITLE,
-  SEARCH_BY_DESCRIPTION
+  SEARCH_BY_DESCRIPTION,
+  FETCH_CATEGORIES
 } from './types';
 
 const api = axios.create({ baseURL: 'http://magmer-api.herokuapp.com/' });
@@ -23,6 +24,12 @@ export const fetchProductShow = () => async dispatch => {
   const res = await api.get('/product/list/15');
 
   dispatch({ type: FETCH_PRODUCTS_SHOW, payload: res.data });
+};
+
+export const fetchCategories = () => async dispatch => {
+  const res = await api.get('/category/list');
+
+  dispatch({ type: FETCH_CATEGORIES, payload: res.data });
 };
 
 export const fetchTags = () => async dispatch => {

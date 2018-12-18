@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export class Filter extends Component {
+export class Sort extends Component {
   render() {
     const { show } = this.props;
     return (
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
   return { show: state.products.show };
 };
 
-export default connect(mapStateToProps)(Filter);
+export default connect(mapStateToProps)(Sort);

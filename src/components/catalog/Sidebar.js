@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
                     className="custom-control-label"
                     htmlFor={producer._id}
                   >
-                    {producer.url}
+                    {producer.name}
                   </label>
                 </div>
               );
@@ -52,7 +52,9 @@ class Sidebar extends React.Component {
     );
   };
 
-  renderTags = () => {
+  renderCategories = () => {};
+
+  renderCategories = () => {
     return (
       <div className="card">
         <div className="card-header" id="headingOne">
@@ -65,7 +67,7 @@ class Sidebar extends React.Component {
               aria-controls="collapseOne"
             >
               <i className="fas fa-tasks fa-lg mr-2" />
-              <b>Теги</b>
+              <b>Категории</b>
             </div>
           </h5>
         </div>
@@ -76,21 +78,28 @@ class Sidebar extends React.Component {
           aria-labelledby="headingOne"
           data-parent="#accordionExample"
         >
-          <ul style={{ height: 350, overflow: 'auto' }} className="list-group">
-            {this.props.tags.map(tag => {
+          <ul
+            style={{ maxHeight: 450, overflow: 'auto' }}
+            className="list-group"
+          >
+            {this.props.categories.map(category => {
               return (
-                <li key={tag._id} className="list-group-item">
+                <li key={category._id} className="list-group-item">
                   <div className="custom-control custom-checkbox">
                     <input
+                      onChange={e =>
+                        console.log(e.target.value, ' ', e.target.checked)
+                      }
+                      value={category._id}
                       type="checkbox"
                       className="custom-control-input"
-                      id={tag._id}
+                      id={category._id}
                     />
                     <label
-                      className="custom-control-label tag"
-                      htmlFor={tag._id}
+                      className="custom-control-label category"
+                      htmlFor={category._id}
                     >
-                      {tag.title}
+                      {category.title}
                     </label>
                   </div>
                 </li>
@@ -103,18 +112,21 @@ class Sidebar extends React.Component {
   };
 
   render() {
-    const { tags, producers } = this.props;
+    const { categories, producers } = this.props;
     return (
       <div className="accordion mb-3" id="accordionExample">
-        {tags ? this.renderTags() : 'loading'}
+        {categories ? this.renderCategories() : 'loading'}
         {producers ? this.renderProducers() : 'loading'}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return { tags: state.tags, producers: state.producers };
+const mapStateToProps = ({ categories, producers }) => {
+  return {
+    categories,
+    producers
+  };
 };
 
 export default connect(mapStateToProps)(Sidebar);

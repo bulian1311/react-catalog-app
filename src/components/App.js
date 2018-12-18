@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
   fetchProductStore,
   fetchProductShow,
-  fetchTags,
+  fetchCategories,
   fetchProducers
 } from '../actions';
 import { withRouter } from 'react-router-dom';
@@ -15,7 +15,7 @@ export class App extends Component {
 
     dispatch(fetchProductStore());
     dispatch(fetchProductShow());
-    dispatch(fetchTags());
+    dispatch(fetchCategories());
     dispatch(fetchProducers());
   };
 

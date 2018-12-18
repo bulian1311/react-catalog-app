@@ -31,6 +31,6 @@ section {
   padding: 150px 0;
 }
 
-.tag:first-letter {
+.category:first-letter {
   text-transform: uppercase;
 }

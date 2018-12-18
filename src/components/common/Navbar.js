@@ -8,8 +8,10 @@ export class InfoBar extends Component {
         <div className="container">
           <span className="navbar-text">
             <b className="text-secondary">
-              <i className="fas fa-mobile-alt fa-lg mr-2" />
-              +7(915)275-44-55
+              <a className="text-secondary" href="tel:+7(915)275-44-55">
+                <i className="fas fa-mobile-alt fa-lg mr-2" />
+                +7(915)275-44-55
+              </a>
             </b>
           </span>
           <span className="navbar-text text-secondary">

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ProductItem from './ProductItem';
 import Sidebar from './Sidebar';
 import Search from './Search';
-import Filter from './Filter';
+import Sort from './Sort';
 import { loadMore } from '../../actions';
 
 export class ProductList extends Component {
@@ -57,7 +57,7 @@ export class ProductList extends Component {
           </div>
 
           <div className="col-lg-9">
-            <Filter />
+            <Sort />
             <div className="row">
               {this.props.show ? this.renderList() : this.renderLoading()}
               {this.props.show ? this.renderLoadMore() : ''}
