@@ -3,6 +3,31 @@ import Navbar from '../common/Navbar';
 import Carousel from './Carousel';
 
 export class Details extends Component {
+  renderSpecifications = data => {
+    let specifications = [];
+
+    for (let spec in data) {
+      specifications.push(
+        <tr>
+          <td>{spec}</td>
+          <td>{data[spec]}</td>
+        </tr>
+      );
+    }
+
+    return (
+      <React.Fragment>
+        <p>
+          <b>Характеристики:</b>
+        </p>
+
+        <table className="table">
+          <tbody>{specifications}</tbody>
+        </table>
+      </React.Fragment>
+    );
+  };
+
   render() {
     const { product } = this.props.location.state;
     return (
@@ -36,6 +61,10 @@ export class Details extends Component {
                   <h4>{product.price}</h4>
                   <br />
                   <p className="card-text">{product.description}</p>
+                  <br />
+                  {product.specifications
+                    ? this.renderSpecifications(product.specifications)
+                    : ''}
                   <br />
                   <p>
                     <small>
