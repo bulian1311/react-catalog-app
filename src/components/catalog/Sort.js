@@ -8,7 +8,7 @@ export class Sort extends Component {
       <div className="mb-1">
         <div className="d-flex justify-content-between">
           <b>
-            Всего товаров:{' '}
+            Товаров:{' '}
             <span className="text-primary">{show ? show.length : ''}</span>
           </b>
           <form className="form-inline">

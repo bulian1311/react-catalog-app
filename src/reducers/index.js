@@ -5,6 +5,7 @@ import producerReducer from './producerReducer';
 import visibleReducer from './visibleReducer';
 import searchReducer from './searchReducer';
 import categoryReducer from './categoryReducer';
+import filterReducer from './filterReducer';
 
 export default combineReducers({
   products: productReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   categories: categoryReducer,
   producers: producerReducer,
   visible: visibleReducer,
-  search: searchReducer
+  search: searchReducer,
+  filter: filterReducer
 });

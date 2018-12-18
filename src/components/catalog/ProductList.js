@@ -4,9 +4,18 @@ import ProductItem from './ProductItem';
 import Sidebar from './Sidebar';
 import Search from './Search';
 import Sort from './Sort';
-import { loadMore } from '../../actions';
+import { loadMore, replaceShow } from '../../actions';
 
 export class ProductList extends Component {
+  componentDidUpdate = () => {
+    const { dispatch, store, filter, filtered } = this.props;
+    if (filter.length > 0) {
+      dispatch(replaceShow(filtered));
+    } else if (store.length > 0) {
+      dispatch(replaceShow(store));
+    }
+  };
+
   renderList = data => {
     let products = [];
 
@@ -48,6 +57,7 @@ export class ProductList extends Component {
   };
 
   render() {
+    const { show } = this.props;
     return (
       <div className="container mt-3">
         <div className="row">
@@ -59,8 +69,10 @@ export class ProductList extends Component {
           <div className="col-lg-9">
             <Sort />
             <div className="row">
-              {this.props.show ? this.renderList() : this.renderLoading()}
-              {this.props.show ? this.renderLoadMore() : ''}
+              {show && show.length > 0
+                ? this.renderList()
+                : this.renderLoading()}
+              {show ? this.renderLoadMore() : ''}
             </div>
           </div>
         </div>
@@ -70,10 +82,15 @@ export class ProductList extends Component {
 }
 
 const mapStateToProps = state => {
+  const { visible, filter } = state;
+  const { store, show, filtered } = state.products;
+
   return {
-    store: state.products.store,
-    show: state.products.show,
-    visible: state.visible
+    store,
+    show,
+    visible,
+    filter,
+    filtered
   };
 };
 

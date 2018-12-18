@@ -1,7 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { filterAdd, filterDelete, filterBy } from '../../actions';
 
 class Sidebar extends React.Component {
+  isChecked = (val, arr) => {
+    return arr.find(el => {
+      return el === val;
+    });
+  };
+
+  handleChange = e => {
+    const { dispatch, filter, store } = this.props;
+    const val = e.target.value;
+    let arr = filter.slice();
+    arr.push(val);
+
+    if (e.target.checked) {
+      dispatch(filterAdd(val));
+      dispatch(filterBy(arr, store));
+    } else {
+      dispatch(filterDelete(val, filter));
+      dispatch(filterBy(filter, store));
+    }
+  };
+
   renderProducers = () => {
     return (
       <div className="card">
@@ -52,9 +74,8 @@ class Sidebar extends React.Component {
     );
   };
 
-  renderCategories = () => {};
-
   renderCategories = () => {
+    const { categories, store } = this.props;
     return (
       <div className="card">
         <div className="card-header" id="headingOne">
@@ -82,29 +103,34 @@ class Sidebar extends React.Component {
             style={{ maxHeight: 450, overflow: 'auto' }}
             className="list-group"
           >
-            {this.props.categories.map(category => {
-              return (
-                <li key={category._id} className="list-group-item">
-                  <div className="custom-control custom-checkbox">
-                    <input
-                      onChange={e =>
-                        console.log(e.target.value, ' ', e.target.checked)
-                      }
-                      value={category._id}
-                      type="checkbox"
-                      className="custom-control-input"
-                      id={category._id}
-                    />
-                    <label
-                      className="custom-control-label category"
-                      htmlFor={category._id}
-                    >
-                      {category.title}
-                    </label>
-                  </div>
-                </li>
-              );
-            })}
+            {store.length > 0
+              ? categories.map(category => {
+                  return (
+                    <li key={category._id} className="list-group-item">
+                      <div className="custom-control custom-checkbox">
+                        <input
+                          onChange={this.handleChange}
+                          value={category._id}
+                          checked={
+                            this.isChecked(category._id, this.props.filter)
+                              ? true
+                              : false
+                          }
+                          type="checkbox"
+                          className="custom-control-input"
+                          id={category._id}
+                        />
+                        <label
+                          className="custom-control-label category"
+                          htmlFor={category._id}
+                        >
+                          {category.title}
+                        </label>
+                      </div>
+                    </li>
+                  );
+                })
+              : ''}
           </ul>
         </div>
       </div>
@@ -112,20 +138,24 @@ class Sidebar extends React.Component {
   };
 
   render() {
-    const { categories, producers } = this.props;
     return (
       <div className="accordion mb-3" id="accordionExample">
-        {categories ? this.renderCategories() : 'loading'}
-        {producers ? this.renderProducers() : 'loading'}
+        {this.renderCategories()}
+        {this.renderProducers()}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ categories, producers }) => {
+const mapStateToProps = state => {
+  const { categories, producers, filter } = state;
+  const { store } = state.products;
+
   return {
     categories,
-    producers
+    producers,
+    filter,
+    store
   };
 };
 

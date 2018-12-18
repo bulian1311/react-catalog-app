@@ -8,7 +8,7 @@ export class Details extends Component {
 
     for (let spec in data) {
       specifications.push(
-        <tr>
+        <tr key={spec + data._id}>
           <td>{spec}</td>
           <td>{data[spec]}</td>
         </tr>

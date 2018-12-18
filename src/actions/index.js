@@ -9,7 +9,11 @@ import {
   SEARCH_QUERY,
   SEARCH_BY_TITLE,
   SEARCH_BY_DESCRIPTION,
-  FETCH_CATEGORIES
+  FETCH_CATEGORIES,
+  FILTER_ADD,
+  FILTER_DELETE,
+  REPLACE_SHOW,
+  FILTER
 } from './types';
 
 const api = axios.create({ baseURL: 'http://magmer-api.herokuapp.com/' });
@@ -44,6 +48,10 @@ export const fetchProducers = () => async dispatch => {
   dispatch({ type: FETCH_PRODUCERS, payload: res.data });
 };
 
+export const replaceShow = data => dispatch => {
+  dispatch({ type: REPLACE_SHOW, payload: data });
+};
+
 export const loadMore = () => dispatch => {
   dispatch({ type: LOAD_MORE, payload: 15 });
 };
@@ -72,4 +80,25 @@ export const searchByDescription = (query, products) => dispatch => {
   });
 
   dispatch({ type: SEARCH_BY_DESCRIPTION, payload: show });
+};
+
+export const filterAdd = val => dispatch => {
+  dispatch({ type: FILTER_ADD, payload: val });
+};
+
+export const filterDelete = (val, filter) => dispatch => {
+  filter.splice(filter.indexOf(val), 1);
+
+  dispatch({ type: FILTER_DELETE, payload: filter });
+};
+
+export const filterBy = (filter, store) => dispatch => {
+  const show = store.filter(product => {
+    return (
+      product.category === filter.find(el => el === product.category)
+      // || product.producer === filter.find(el => el === product.producer)
+    );
+  });
+
+  dispatch({ type: FILTER, payload: show });
 };
