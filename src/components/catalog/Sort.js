@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { sortAdd, sortBy } from '../../actions';
 
 export class Sort extends Component {
+  selectHandler = e => {
+    const { dispatch, show } = this.props;
+    const val = e.target.value;
+    dispatch(sortAdd(val));
+    dispatch(sortBy(val, show));
+  };
+
   render() {
-    const { show } = this.props;
+    const { show, sort } = this.props;
     return (
       <div className="mb-1">
         <div className="d-flex justify-content-between">
@@ -17,13 +25,14 @@ export class Sort extends Component {
               <b>Сортировать</b>
             </label>
             <select
+              value={sort}
+              onChange={this.selectHandler}
               className="custom-select custom-select-sm my-1 mr-sm-2"
               id="inlineFormCustomSelectPref"
             >
-              <option defaultValue>Выбрать...</option>
-
-              <option value="1">По цене</option>
-              <option value="2">По алфавиту</option>
+              <option value="none">Выбрать...</option>
+              <option value="name">По алфавиту</option>
+              <option value="price">По цене</option>
             </select>
           </form>
         </div>
@@ -33,7 +42,9 @@ export class Sort extends Component {
 }
 
 const mapStateToProps = state => {
-  return { show: state.products.show };
+  const { show } = state.products;
+  const { sort } = state;
+  return { show, sort };
 };
 
 export default connect(mapStateToProps)(Sort);

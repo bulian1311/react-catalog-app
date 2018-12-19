@@ -13,7 +13,12 @@ import {
   FILTER_ADD,
   FILTER_DELETE,
   REPLACE_SHOW,
-  FILTER
+  FILTER,
+  SORT_ADD,
+  SORT_BY,
+  SORT_CLEAR,
+  FILTER_CLEAR,
+  SEARCH_CLEAR
 } from './types';
 
 const api = axios.create({ baseURL: 'http://magmer-api.herokuapp.com/' });
@@ -93,12 +98,55 @@ export const filterDelete = (val, filter) => dispatch => {
 };
 
 export const filterBy = (filter, store) => dispatch => {
-  const show = store.filter(product => {
-    return (
-      product.category === filter.find(el => el === product.category)
-      // || product.producer === filter.find(el => el === product.producer)
-    );
-  });
+  if (filter.length > 0) {
+    const show = store.filter(product => {
+      return (
+        product.category === filter.find(el => el === product.category)
+        // || product.producer === filter.find(el => el === product.producer)
+      );
+    });
 
-  dispatch({ type: FILTER, payload: show });
+    dispatch({ type: FILTER, payload: show });
+  } else {
+    dispatch({ type: FILTER, payload: store });
+  }
+};
+
+export const sortAdd = val => dispatch => {
+  dispatch({ type: SORT_ADD, payload: val });
+};
+
+export const sortBy = (sort, data) => dispatch => {
+  let show = data.slice();
+  if (sort === 'price') {
+    show.sort((a, b) => {
+      return parseInt(a.price) - parseInt(b.price);
+    });
+  } else if (sort === 'name') {
+    show.sort((a, b) => {
+      if (a.title > b.title) {
+        return 1;
+      }
+      if (a.title < b.title) {
+        return -1;
+      }
+      return 0;
+    });
+  } else {
+    show.sort();
+  }
+
+  dispatch({ type: SORT_BY, payload: show });
+};
+
+export const sortClear = () => dispatch => {
+  dispatch({ type: SORT_CLEAR, payload: 'none' });
+};
+
+export const filterClear = () => dispatch => {
+  dispatch({ type: FILTER_CLEAR, payload: [] });
+};
+
+export const searchClear = () => dispatch => {
+  dispatch({ type: SEARCH_CLEAR, payload: '' });
 };

@@ -1,4 +1,4 @@
-import { FILTER_ADD, FILTER_DELETE } from '../actions/types';
+import { FILTER_ADD, FILTER_DELETE, FILTER_CLEAR } from '../actions/types';
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -7,6 +7,9 @@ export default function(state = [], action) {
 
     case FILTER_DELETE:
       return [...action.payload];
+
+    case FILTER_CLEAR:
+      return action.payload;
 
     default:
       return state;

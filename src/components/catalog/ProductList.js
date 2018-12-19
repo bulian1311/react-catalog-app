@@ -4,18 +4,9 @@ import ProductItem from './ProductItem';
 import Sidebar from './Sidebar';
 import Search from './Search';
 import Sort from './Sort';
-import { loadMore, replaceShow } from '../../actions';
+import { loadMore } from '../../actions';
 
 export class ProductList extends Component {
-  componentDidUpdate = () => {
-    const { dispatch, store, filter, filtered } = this.props;
-    if (filter.length > 0) {
-      dispatch(replaceShow(filtered));
-    } else if (store.length > 0) {
-      dispatch(replaceShow(store));
-    }
-  };
-
   renderList = data => {
     let products = [];
 
@@ -33,7 +24,7 @@ export class ProductList extends Component {
   renderLoading = () => {
     return (
       <img
-        className="img-fluid d-block mx-auto mb-5"
+        className="img-fluid d-block mx-auto mb-5 mt-5"
         src="/img/loader.gif"
         alt=""
       />
@@ -82,15 +73,13 @@ export class ProductList extends Component {
 }
 
 const mapStateToProps = state => {
-  const { visible, filter } = state;
-  const { store, show, filtered } = state.products;
+  const { visible } = state;
+  const { store, show } = state.products;
 
   return {
     store,
     show,
-    visible,
-    filter,
-    filtered
+    visible
   };
 };
 

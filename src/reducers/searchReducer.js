@@ -1,4 +1,4 @@
-import { SEARCH_HANDLER, SEARCH_QUERY } from '../actions/types';
+import { SEARCH_HANDLER, SEARCH_QUERY, SEARCH_CLEAR } from '../actions/types';
 
 const initialState = { handler: 'title', query: '' };
 
@@ -9,6 +9,9 @@ export default function(state = initialState, action) {
 
     case SEARCH_QUERY:
       return { ...state, query: action.payload };
+
+    case SEARCH_CLEAR:
+      return initialState;
 
     default:
       return state;

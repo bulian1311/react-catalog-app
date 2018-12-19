@@ -13,8 +13,14 @@ export const LOAD_MORE = 'load_more';
 
 export const SEARCH_HANDLER = 'search_handler';
 export const SEARCH_QUERY = 'search_query';
+export const SEARCH_CLEAR = 'search_clear';
 
 export const FILTER_ADD = 'filter_add';
 export const FILTER_DELETE = 'filter_delete';
 export const FILTER = 'filter';
 export const FILTER_BY_CATEGORY_ADD = 'filter_by_category_add';
+export const FILTER_CLEAR = 'filter_clear';
+
+export const SORT_ADD = 'sort_add';
+export const SORT_BY = 'sort_by';
+export const SORT_CLEAR = 'sort_clear';

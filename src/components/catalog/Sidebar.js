@@ -1,6 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { filterAdd, filterDelete, filterBy } from '../../actions';
+import {
+  filterAdd,
+  filterDelete,
+  filterBy,
+  searchClear,
+  sortClear
+} from '../../actions';
 
 class Sidebar extends React.Component {
   isChecked = (val, arr) => {
@@ -14,6 +20,9 @@ class Sidebar extends React.Component {
     const val = e.target.value;
     let arr = filter.slice();
     arr.push(val);
+
+    dispatch(searchClear());
+    dispatch(sortClear());
 
     if (e.target.checked) {
       dispatch(filterAdd(val));

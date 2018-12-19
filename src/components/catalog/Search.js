@@ -5,13 +5,19 @@ import {
   searchHandler,
   searchByTitle,
   searchByDescription,
-  searchQuery
+  searchQuery,
+  filterClear,
+  sortClear
 } from '../../actions';
 
 export class Search extends Component {
   search = e => {
     const { dispatch, store, handler } = this.props;
     const query = e.target.value;
+
+    dispatch(filterClear());
+    dispatch(sortClear());
+
     dispatch(searchQuery(query));
 
     if (handler === 'title') {
