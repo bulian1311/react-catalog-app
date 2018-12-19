@@ -58,7 +58,7 @@ export class Details extends Component {
                   <br />
                   <h3 className="card-title">{product.title}</h3>
                   <hr />
-                  <h4>{product.price}</h4>
+                  <h4>{`${product.price} ₽`}</h4>
                   <br />
                   <p className="card-text">{product.description}</p>
                   <br />

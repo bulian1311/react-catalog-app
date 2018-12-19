@@ -19,7 +19,7 @@ const ProductItem = ({ product }) => {
               {product.title}
             </Link>
           </h5>
-          <h5 className="">{product.price}</h5>
+          <h5 className="">{`${product.price} ₽`}</h5>
 
           <div className="btn btn-outline-primary btn-sm mt-auto">
             <i className="fas fa-cart-plus fa-lg mr-2" />
