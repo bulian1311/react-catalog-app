@@ -5,7 +5,8 @@ import {
   filterDelete,
   filterBy,
   searchClear,
-  sortClear
+  sortClear,
+  loadMoreClear
 } from '../../actions';
 
 class Sidebar extends React.Component {
@@ -23,6 +24,7 @@ class Sidebar extends React.Component {
 
     dispatch(searchClear());
     dispatch(sortClear());
+    dispatch(loadMoreClear());
 
     if (e.target.checked) {
       dispatch(filterAdd(val));

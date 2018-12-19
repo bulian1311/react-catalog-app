@@ -18,7 +18,8 @@ import {
   SORT_BY,
   SORT_CLEAR,
   FILTER_CLEAR,
-  SEARCH_CLEAR
+  SEARCH_CLEAR,
+  LOA_MORE_CLEAR
 } from './types';
 
 const api = axios.create({ baseURL: 'http://magmer-api.herokuapp.com/' });
@@ -149,4 +150,8 @@ export const filterClear = () => dispatch => {
 
 export const searchClear = () => dispatch => {
   dispatch({ type: SEARCH_CLEAR, payload: '' });
+};
+
+export const loadMoreClear = () => dispatch => {
+  dispatch({ type: LOA_MORE_CLEAR, payload: 15 });
 };

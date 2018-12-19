@@ -10,6 +10,7 @@ export const SEARCH_BY_TITLE = 'search_by_title';
 export const SEARCH_BY_DESCRIPTION = 'search_by_description';
 
 export const LOAD_MORE = 'load_more';
+export const LOA_MORE_CLEAR = 'load_more_clear';
 
 export const SEARCH_HANDLER = 'search_handler';
 export const SEARCH_QUERY = 'search_query';

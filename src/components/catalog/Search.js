@@ -7,7 +7,8 @@ import {
   searchByDescription,
   searchQuery,
   filterClear,
-  sortClear
+  sortClear,
+  loadMoreClear
 } from '../../actions';
 
 export class Search extends Component {
@@ -17,6 +18,7 @@ export class Search extends Component {
 
     dispatch(filterClear());
     dispatch(sortClear());
+    dispatch(loadMoreClear());
 
     dispatch(searchQuery(query));
 
