@@ -42,12 +42,8 @@ export class Details extends Component {
               </div>
             </div>
             <div className="col-lg-5">
-              <div className="btn btn-lg btn-outline-primary btn-block mt-4">
-                <i className="fas fa-cart-plus fa-lg mr-2" />
-                <b>Добавить в Корзину</b>
-              </div>
               <div
-                className="card mt-4"
+                className="card bg-light mt-4"
                 style={{
                   position: 'relative',
                   minHeight: 440,
@@ -58,7 +54,10 @@ export class Details extends Component {
                   <br />
                   <h3 className="card-title">{product.title}</h3>
                   <hr />
-                  <h4>{`${product.price} ₽`}</h4>
+                  <h4>
+                    {product.price}
+                    <i class="fas fa-ruble-sign ml-2 fa-sm" />
+                  </h4>
                   <br />
                   <p className="card-text">{product.description}</p>
                   <br />
@@ -73,6 +72,10 @@ export class Details extends Component {
                     </small>
                   </p>
                 </div>
+              </div>
+              <div className="btn btn-lg btn-outline-primary btn-block mt-4">
+                <i className="fas fa-cart-arrow-down fa-lg mr-2" />
+                <b>Добавить в Корзину</b>
               </div>
             </div>
           </div>

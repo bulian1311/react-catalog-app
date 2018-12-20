@@ -37,14 +37,27 @@ export class InfoBar extends Component {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to="/" className="nav-link">
-                  <i className="fas fa-home fa-lg mr-2" />
-                  Домой
+                  <b>
+                    <i className="fas fa-home fa-lg mr-2" />
+                    Домой
+                  </b>
                 </Link>
               </li>
-              <li>
+              <li className="nav-item">
                 <Link to="/catalog" className="nav-link">
-                  <i className="fas fa-th-list fa-lg mr-2" />
-                  Каталог
+                  <b>
+                    <i className="fas fa-th-list fa-lg mr-2" />
+                    Каталог
+                  </b>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/cart" className="nav-link">
+                  <b>
+                    <i class="fas fa-shopping-cart fa-lg mr-2" />
+                    Корзина
+                    <span class="badge badge-pill badge-primary ml-1">3</span>
+                  </b>
                 </Link>
               </li>
             </ul>

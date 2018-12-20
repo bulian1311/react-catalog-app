@@ -19,10 +19,13 @@ const ProductItem = ({ product }) => {
               {product.title}
             </Link>
           </h5>
-          <h5 className="">{`${product.price} ₽`}</h5>
+          <h5 className="">
+            {product.price}
+            <i class="fas fa-ruble-sign ml-2 fa-sm" />
+          </h5>
 
           <div className="btn btn-outline-primary btn-sm mt-auto">
-            <i className="fas fa-cart-plus fa-lg mr-2" />
+            <i className="fas fa-cart-arrow-down fa-lg mr-2" />
             <b>В корзину</b>
           </div>
         </div>

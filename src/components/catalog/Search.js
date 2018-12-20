@@ -30,7 +30,7 @@ export class Search extends Component {
   };
 
   render() {
-    const { dispatch, query } = this.props;
+    const { dispatch, query, handler } = this.props;
 
     return (
       <div className="input-group mb-3 mr-3 ml-3">
@@ -52,13 +52,12 @@ export class Search extends Component {
           aria-describedby="inputGroup-sizing-default"
         />
         <select
+          value={handler}
           className="custom-select"
           id="inputGroupSelect01"
           onChange={e => dispatch(searchHandler(e.target.value))}
         >
-          <option defaultValue value="title">
-            Искать по названию
-          </option>
+          <option value="title">Искать по названию</option>
           <option value="description">Искать по описанию</option>
         </select>
       </div>
@@ -67,10 +66,12 @@ export class Search extends Component {
 }
 
 const mapStateToProps = state => {
+  const { query, handler } = state.search;
+  const { store } = state.products;
   return {
-    store: state.products.store,
-    handler: state.search.handler,
-    query: state.search.query
+    store,
+    handler,
+    query
   };
 };
 

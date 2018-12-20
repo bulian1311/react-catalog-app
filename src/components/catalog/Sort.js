@@ -15,14 +15,17 @@ export class Sort extends Component {
     return (
       <div className="mb-1">
         <div className="d-flex justify-content-between">
-          <b>
+          <b className="text-secondary">
+            <i class="fab fa-fort-awesome fa-lg mr-1" />
             Товаров:{' '}
             <span className="text-primary">{show ? show.length : ''}</span>
           </b>
           <form className="form-inline">
             <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-              <i className="fas fa-sort-amount-down fa-lg ml-1 mr-1" />
-              <b>Сортировать</b>
+              <b className="text-secondary">
+                <i className="fas fa-sort-amount-down fa-lg ml-1 mr-1" />
+                Сортировать
+              </b>
             </label>
             <select
               value={sort}

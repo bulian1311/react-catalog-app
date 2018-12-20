@@ -35,72 +35,23 @@ class Sidebar extends React.Component {
     }
   };
 
-  renderProducers = () => {
-    return (
-      <div className="card">
-        <div className="card-header" id="headingTwo">
-          <h5 className="mb-0">
-            <div
-              className="btn btn-link collapsed"
-              data-toggle="collapse"
-              data-target="#collapseTwo"
-              aria-expanded="true"
-              aria-controls="collapseTwo"
-            >
-              <i className="fas fa-tasks fa-lg mr-2" />
-              <b>Поставщики</b>
-            </div>
-          </h5>
-        </div>
-        <div
-          id="collapseTwo"
-          className="collapse multi-collapse"
-          aria-labelledby="headingTwo"
-          data-parent="#accordionExample"
-        >
-          <div className="card-body">
-            {this.props.producers.map(producer => {
-              return (
-                <div
-                  key={producer._id}
-                  className="custom-control custom-checkbox"
-                >
-                  <input
-                    type="checkbox"
-                    className="custom-control-input"
-                    id={producer._id}
-                  />
-                  <label
-                    className="custom-control-label"
-                    htmlFor={producer._id}
-                  >
-                    {producer.name}
-                  </label>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   renderCategories = () => {
     const { categories, store } = this.props;
     return (
       <div className="card">
-        <div className="card-header" id="headingOne">
+        <div
+          className="card-header"
+          id="headingOne"
+          data-toggle="collapse"
+          data-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
           <h5 className="mb-0">
-            <div
-              className="btn btn-link"
-              data-toggle="collapse"
-              data-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
-            >
+            <span className="btn text-secondary">
               <i className="fas fa-tasks fa-lg mr-2" />
               <b>Категории</b>
-            </div>
+            </span>
           </h5>
         </div>
 
@@ -143,6 +94,57 @@ class Sidebar extends React.Component {
                 })
               : ''}
           </ul>
+        </div>
+      </div>
+    );
+  };
+
+  renderProducers = () => {
+    return (
+      <div className="card collapsed">
+        <div
+          className="card-header"
+          data-toggle="collapse"
+          data-target="#collapseTwo"
+          aria-expanded="true"
+          aria-controls="collapseTwo"
+          id="headingTwo"
+        >
+          <h5 className="mb-0">
+            <span className="btn text-secondary">
+              <i className="fas fa-tasks fa-lg mr-2" />
+              <b>Поставщики</b>
+            </span>
+          </h5>
+        </div>
+        <div
+          id="collapseTwo"
+          className="collapse multi-collapse"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionExample"
+        >
+          <div className="card-body">
+            {this.props.producers.map(producer => {
+              return (
+                <div
+                  key={producer._id}
+                  className="custom-control custom-checkbox"
+                >
+                  <input
+                    type="checkbox"
+                    className="custom-control-input"
+                    id={producer._id}
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor={producer._id}
+                  >
+                    {producer.name}
+                  </label>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
