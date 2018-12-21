@@ -13,13 +13,17 @@ import {
   FILTER_ADD,
   FILTER_DELETE,
   REPLACE_SHOW,
-  FILTER,
+  FILTER_BY_CATEGORY,
   SORT_ADD,
   SORT_BY,
   SORT_CLEAR,
   FILTER_CLEAR,
   SEARCH_CLEAR,
-  LOA_MORE_CLEAR
+  LOA_MORE_CLEAR,
+  FETCH_CART,
+  ADD_TO_CART,
+  DELETE_FROM_CART,
+  CART_CLEAR
 } from './types';
 
 const api = axios.create({ baseURL: 'http://magmer-api.herokuapp.com/' });
@@ -98,18 +102,15 @@ export const filterDelete = (val, filter) => dispatch => {
   dispatch({ type: FILTER_DELETE, payload: filter });
 };
 
-export const filterBy = (filter, store) => dispatch => {
+export const filterByCategory = (filter, store) => dispatch => {
   if (filter.length > 0) {
     const show = store.filter(product => {
-      return (
-        product.category === filter.find(el => el === product.category)
-        // || product.producer === filter.find(el => el === product.producer)
-      );
+      return filter.includes(product.category);
     });
 
-    dispatch({ type: FILTER, payload: show });
+    dispatch({ type: FILTER_BY_CATEGORY, payload: show });
   } else {
-    dispatch({ type: FILTER, payload: store });
+    dispatch({ type: FILTER_BY_CATEGORY, payload: store });
   }
 };
 
@@ -154,4 +155,39 @@ export const searchClear = () => dispatch => {
 
 export const loadMoreClear = () => dispatch => {
   dispatch({ type: LOA_MORE_CLEAR, payload: 15 });
+};
+
+export const addToCart = (product, cart) => dispatch => {
+  let newItems = [...cart.items];
+  let isPush = true;
+
+  newItems.forEach(item => {
+    if (item.product._id === product._id) {
+      ++item.count;
+      isPush = false;
+    }
+  });
+
+  if (isPush) {
+    newItems.push({ product, count: 1 });
+  }
+
+  const newCart = {
+    items: newItems,
+    totalPrice: cart.totalPrice + parseInt(product.price),
+    totalCount: ++cart.totalCount
+  };
+  dispatch({ type: ADD_TO_CART, payload: newCart });
+};
+
+export const deleteFromCart = () => dispatch => {
+  dispatch({ type: DELETE_FROM_CART });
+};
+
+export const cartClear = () => dispatch => {
+  dispatch({ type: CART_CLEAR });
+};
+
+export const fetchCart = () => dispatch => {
+  dispatch({ type: FETCH_CART });
 };

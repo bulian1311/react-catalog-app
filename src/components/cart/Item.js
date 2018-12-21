@@ -1,32 +1,44 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { addToCart } from '../../actions';
 
 export class Item extends Component {
   render() {
+    const { item, dispatch, cart } = this.props;
+
     return (
-      <div class="card mt-4 bg-light">
-        <div class="card-body">
+      <div className="card mt-4 bg-light">
+        <div className="card-body">
           <div className="d-flex justify-content-between">
             <div>
-              <h3 class="card-title">Special title treatment</h3>
+              <Link
+                to={{ pathname: '/details', state: { product: item.product } }}
+              >
+                <h3 className="card-title">{item.product.title}</h3>
+              </Link>
               <span>
                 Цена:
-                <b class="ml-1 text-primary">
-                  123000
-                  <i class="fas fa-ruble-sign ml-1 fa-sm" />
+                <b className="ml-1 text-primary">
+                  {item.product.price}
+                  <i className="fas fa-ruble-sign ml-1 fa-sm" />
                 </b>
               </span>
               <span className="ml-5">
                 Количество:
-                <b className="text-primary"> 1</b>
+                <b className="ml-1 text-primary">{item.count}</b>
               </span>
             </div>
             <div>
-              <div class="btn btn-outline-danger btn-sm btn-block">
-                <i class="fas fa-minus mr-2" />
+              <div className="btn btn-outline-danger btn-sm btn-block">
+                <i className="fas fa-minus mr-2" />
                 <b>Удалить</b>
               </div>
-              <div class="btn btn-outline-primary btn-sm btn-block">
-                <i class="fas fa-plus mr-1" />
+              <div
+                onClick={() => dispatch(addToCart(item.product, cart))}
+                className="btn btn-outline-primary btn-sm btn-block"
+              >
+                <i className="fas fa-plus mr-1" />
                 <b>Добавить</b>
               </div>
             </div>
@@ -37,4 +49,8 @@ export class Item extends Component {
   }
 }
 
-export default Item;
+const mapStateToProps = state => {
+  return { cart: state.cart };
+};
+
+export default connect(mapStateToProps)(Item);

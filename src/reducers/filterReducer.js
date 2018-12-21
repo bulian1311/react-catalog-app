@@ -9,7 +9,7 @@ export default function(state = [], action) {
       return [...action.payload];
 
     case FILTER_CLEAR:
-      return action.payload;
+      return [];
 
     default:
       return state;

@@ -16,7 +16,7 @@ export class Sort extends Component {
       <div className="mb-1">
         <div className="d-flex justify-content-between">
           <b className="text-secondary">
-            <i class="fab fa-fort-awesome fa-lg mr-1" />
+            <i className="fab fa-fort-awesome fa-lg mr-1" />
             Товаров:{' '}
             <span className="text-primary">{show ? show.length : ''}</span>
           </b>

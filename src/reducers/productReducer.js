@@ -4,7 +4,7 @@ import {
   REPLACE_SHOW,
   SEARCH_BY_TITLE,
   SEARCH_BY_DESCRIPTION,
-  FILTER,
+  FILTER_BY_CATEGORY,
   SORT_BY
 } from '../actions/types';
 
@@ -27,7 +27,7 @@ export default function(state = initialState, action) {
     case SEARCH_BY_DESCRIPTION:
       return { ...state, show: action.payload };
 
-    case FILTER:
+    case FILTER_BY_CATEGORY:
       return { ...state, show: action.payload };
 
     case SORT_BY:

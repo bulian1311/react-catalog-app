@@ -18,10 +18,15 @@ export const SEARCH_CLEAR = 'search_clear';
 
 export const FILTER_ADD = 'filter_add';
 export const FILTER_DELETE = 'filter_delete';
-export const FILTER = 'filter';
+export const FILTER_BY_CATEGORY = 'filter_by_category';
 export const FILTER_BY_CATEGORY_ADD = 'filter_by_category_add';
 export const FILTER_CLEAR = 'filter_clear';
 
 export const SORT_ADD = 'sort_add';
 export const SORT_BY = 'sort_by';
 export const SORT_CLEAR = 'sort_clear';
+
+export const FETCH_CART = 'fetch_cart';
+export const ADD_TO_CART = 'add_to_cart';
+export const DELETE_FROM_CART = 'delete_from_cart';
+export const CART_CLEAR = 'cart_clear';

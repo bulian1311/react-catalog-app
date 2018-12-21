@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export class InfoBar extends Component {
   render() {
+    const { totalCount } = this.props;
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
@@ -54,9 +56,15 @@ export class InfoBar extends Component {
               <li className="nav-item">
                 <Link to="/cart" className="nav-link">
                   <b>
-                    <i class="fas fa-shopping-cart fa-lg mr-2" />
+                    <i className="fas fa-shopping-cart fa-lg mr-2" />
                     Корзина
-                    <span class="badge badge-pill badge-primary ml-1">3</span>
+                    {totalCount > 0 ? (
+                      <span className="badge badge-pill badge-primary ml-1">
+                        {totalCount}
+                      </span>
+                    ) : (
+                      ''
+                    )}
                   </b>
                 </Link>
               </li>
@@ -68,4 +76,8 @@ export class InfoBar extends Component {
   }
 }
 
-export default InfoBar;
+const mapStateToProps = state => {
+  return { totalCount: state.cart.totalCount };
+};
+
+export default connect(mapStateToProps)(InfoBar);

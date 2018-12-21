@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   filterAdd,
   filterDelete,
-  filterBy,
+  filterByCategory,
   searchClear,
   sortClear,
   loadMoreClear
@@ -28,10 +28,10 @@ class Sidebar extends React.Component {
 
     if (e.target.checked) {
       dispatch(filterAdd(val));
-      dispatch(filterBy(arr, store));
+      dispatch(filterByCategory(arr, store));
     } else {
       dispatch(filterDelete(val, filter));
-      dispatch(filterBy(filter, store));
+      dispatch(filterByCategory(filter, store));
     }
   };
 

@@ -1,31 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Form from './Form';
+import { cartClear } from '../../actions';
 
 export class Total extends Component {
   render() {
+    const { cart, dispatch } = this.props;
     return (
-      <div class="card mt-4 bg-light">
-        <div class="card-body">
-          <h3 class="card-title">Общая стоимость:</h3>
+      <div className="card mt-4 bg-light">
+        <div className="card-body">
+          <h3 className="card-title">Общая стоимость:</h3>
           <h2>
-            123000
-            <i class="fas fa-ruble-sign ml-2 fa-sm" />
+            {cart.totalPrice}
+            <i className="fas fa-ruble-sign ml-2 fa-sm" />
           </h2>
-          <p class="card-text">
+          <p className="card-text">
             With supporting text below as a natural lead-in to additional
             content.
           </p>
           <Form />
           <div className="">
-            <div class="btn btn-outline-success btn-lg btn-block mt-4">
+            <div className="btn btn-outline-success btn-lg btn-block mt-4">
               <b>
-                <i class="fas fa-money-bill fa-lg mr-2" />
+                <i className="fas fa-money-bill fa-lg mr-2" />
                 Оформить заказ
               </b>
             </div>
-            <div class="btn btn-outline-danger btn-sm btn-block mt-4">
+            <div
+              onClick={() => dispatch(cartClear())}
+              className="btn btn-outline-danger btn-sm btn-block mt-4"
+            >
               <b>
-                <i class="fas fa-trash-alt fa-lg mr-2" />
+                <i className="fas fa-trash-alt fa-lg mr-2" />
                 Очистить корзину
               </b>
             </div>
@@ -36,4 +42,8 @@ export class Total extends Component {
   }
 }
 
-export default Total;
+const mapStateToProps = state => {
+  return { cart: state.cart };
+};
+
+export default connect(mapStateToProps)(Total);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Navbar from '../common/Navbar';
 import Carousel from './Carousel';
+import { addToCart } from '../../actions';
 
 export class Details extends Component {
   renderSpecifications = data => {
@@ -30,6 +32,7 @@ export class Details extends Component {
 
   render() {
     const { product } = this.props.location.state;
+    const { dispatch, cart } = this.props;
     return (
       <div className="detail">
         <Navbar />
@@ -56,7 +59,7 @@ export class Details extends Component {
                   <hr />
                   <h4>
                     {product.price}
-                    <i class="fas fa-ruble-sign ml-2 fa-sm" />
+                    <i className="fas fa-ruble-sign ml-2 fa-sm" />
                   </h4>
                   <br />
                   <p className="card-text">{product.description}</p>
@@ -73,7 +76,10 @@ export class Details extends Component {
                   </p>
                 </div>
               </div>
-              <div className="btn btn-lg btn-outline-primary btn-block mt-4">
+              <div
+                onClick={e => dispatch(addToCart(product, cart))}
+                className="btn btn-lg btn-outline-primary btn-block mt-4"
+              >
                 <i className="fas fa-cart-arrow-down fa-lg mr-2" />
                 <b>Добавить в Корзину</b>
               </div>
@@ -85,4 +91,8 @@ export class Details extends Component {
   }
 }
 
-export default Details;
+const mapStateToProps = state => {
+  return { cart: state.cart };
+};
+
+export default connect(mapStateToProps)(Details);
