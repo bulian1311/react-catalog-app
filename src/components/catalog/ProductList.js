@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProductItem from './ProductItem';
-import Sidebar from './Sidebar';
-import Search from './Search';
-import Sort from './Sort';
 import { loadMore } from '../../actions';
 
 export class ProductList extends Component {
@@ -50,23 +47,9 @@ export class ProductList extends Component {
   render() {
     const { show } = this.props;
     return (
-      <div className="container mt-3">
-        <div className="row">
-          <Search />
-          <div className="col-lg-3">
-            <Sidebar />
-          </div>
-
-          <div className="col-lg-9">
-            <Sort />
-            <div className="row">
-              {show && show.length > 0
-                ? this.renderList()
-                : this.renderLoading()}
-              {show ? this.renderLoadMore() : ''}
-            </div>
-          </div>
-        </div>
+      <div className="row">
+        {show && show.length > 0 ? this.renderList() : this.renderLoading()}
+        {show ? this.renderLoadMore() : ''}
       </div>
     );
   }

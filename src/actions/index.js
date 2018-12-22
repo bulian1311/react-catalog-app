@@ -214,12 +214,10 @@ export const cartClear = () => dispatch => {
 
 export const fetchCart = () => dispatch => {
   let cart = JSON.parse(localStorage.getItem('magmer-cart'));
-  console.log(cart, '111');
 
   if (!cart) {
     cart = { totalCount: 0, totalPrice: 0, items: [] };
   }
 
-  console.log(cart, '2222');
   dispatch({ type: FETCH_CART, payload: cart });
 };
