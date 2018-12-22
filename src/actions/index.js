@@ -177,17 +177,49 @@ export const addToCart = (product, cart) => dispatch => {
     totalPrice: cart.totalPrice + parseInt(product.price),
     totalCount: ++cart.totalCount
   };
+
+  localStorage.setItem('magmer-cart', JSON.stringify(newCart));
+
   dispatch({ type: ADD_TO_CART, payload: newCart });
 };
 
-export const deleteFromCart = () => dispatch => {
-  dispatch({ type: DELETE_FROM_CART });
+export const deleteFromCart = (product, cart) => dispatch => {
+  let newItems = [...cart.items];
+
+  newItems.forEach(item => {
+    if (item.product._id === product._id) {
+      --item.count;
+    }
+  });
+
+  newItems = newItems.filter(item => {
+    return item.count > 0;
+  });
+
+  const newCart = {
+    items: newItems,
+    totalPrice: cart.totalPrice - parseInt(product.price),
+    totalCount: --cart.totalCount
+  };
+
+  localStorage.setItem('magmer-cart', JSON.stringify(newCart));
+
+  dispatch({ type: DELETE_FROM_CART, payload: newCart });
 };
 
 export const cartClear = () => dispatch => {
+  localStorage.removeItem('magmer-cart');
   dispatch({ type: CART_CLEAR });
 };
 
 export const fetchCart = () => dispatch => {
-  dispatch({ type: FETCH_CART });
+  let cart = JSON.parse(localStorage.getItem('magmer-cart'));
+  console.log(cart, '111');
+
+  if (!cart) {
+    cart = { totalCount: 0, totalPrice: 0, items: [] };
+  }
+
+  console.log(cart, '2222');
+  dispatch({ type: FETCH_CART, payload: cart });
 };

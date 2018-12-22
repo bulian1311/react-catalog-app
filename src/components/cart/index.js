@@ -8,7 +8,7 @@ export class Cart extends Component {
   render() {
     const { totalCount } = this.props;
     return (
-      <div className="cart">
+      <div className="cart mb-4">
         <Navbar />
         <div className="container">
           {totalCount > 0 ? (

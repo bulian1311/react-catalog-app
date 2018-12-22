@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../../actions';
+import { addToCart, deleteFromCart } from '../../actions';
 
 export class Item extends Component {
   render() {
@@ -30,7 +30,10 @@ export class Item extends Component {
               </span>
             </div>
             <div>
-              <div className="btn btn-outline-danger btn-sm btn-block">
+              <div
+                onClick={() => dispatch(deleteFromCart(item.product, cart))}
+                className="btn btn-outline-danger btn-sm btn-block"
+              >
                 <i className="fas fa-minus mr-2" />
                 <b>Удалить</b>
               </div>

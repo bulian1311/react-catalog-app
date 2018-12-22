@@ -5,7 +5,8 @@ import {
   fetchProductStore,
   fetchProductShow,
   fetchCategories,
-  fetchProducers
+  fetchProducers,
+  fetchCart
 } from '../actions';
 import { withRouter } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ export class App extends Component {
     dispatch(fetchProductShow());
     dispatch(fetchCategories());
     dispatch(fetchProducers());
+    dispatch(fetchCart());
   };
 
   render() {
