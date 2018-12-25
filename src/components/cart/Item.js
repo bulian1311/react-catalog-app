@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart, deleteFromCart } from '../../actions';
+import { addToCart, deleteFromCart } from '../../actions/cartActions';
 
 export class Item extends Component {
   render() {

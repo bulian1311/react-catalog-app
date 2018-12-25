@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { searchClear } from '../../actions/searchActions';
+import { sortClear } from '../../actions/sortActions';
+import { loadMoreClear } from '../../actions/visibleActions';
 import {
   filterAdd,
   filterDelete,
-  filterByCategory,
-  searchClear,
-  sortClear,
-  loadMoreClear
-} from '../../actions';
+  filterByCategory
+} from '../../actions/filterActions';
 
 class Sidebar extends React.Component {
   isChecked = (val, arr) => {

@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { filterClear } from '../../actions/filterActions';
+import { sortClear } from '../../actions/sortActions';
+import { loadMoreClear } from '../../actions/visibleActions';
 import {
   searchHandler,
   searchByTitle,
   searchByDescription,
-  searchQuery,
-  filterClear,
-  sortClear,
-  loadMoreClear
-} from '../../actions';
+  searchQuery
+} from '../../actions/searchActions';
 
 export class Search extends Component {
   search = e => {

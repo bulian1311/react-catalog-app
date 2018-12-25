@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Form from './Form';
-import { cartSubmit, cartClear } from '../../actions';
+import { cartSubmit, cartClear } from '../../actions/cartActions';
 
 export class Total extends Component {
   buttonSubmitClick = () => {

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import Router from './Router';
 import { connect } from 'react-redux';
-import {
-  fetchProductStore,
-  fetchProductShow,
-  fetchCategories,
-  fetchProducers,
-  fetchCart
-} from '../actions';
+import { fetchCategories } from '../actions/categoryActions';
+import { fetchProducers } from '../actions/producerActions';
+import { fetchProductStore, fetchProductShow } from '../actions/productActions';
+import { fetchCart } from '../actions/cartActions';
 import { withRouter } from 'react-router-dom';
 
 export class App extends Component {

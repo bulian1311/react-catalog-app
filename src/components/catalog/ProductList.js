@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProductItem from './ProductItem';
-import { loadMore } from '../../actions';
+import { loadMore } from '../../actions/visibleActions';
 
 export class ProductList extends Component {
   renderList = data => {

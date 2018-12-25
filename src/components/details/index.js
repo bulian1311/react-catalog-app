@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Navbar from '../common/Navbar';
 import Carousel from './Carousel';
-import { addToCart } from '../../actions';
+import { addToCart } from '../../actions/cartActions';
 
 export class Details extends Component {
   renderSpecifications = data => {

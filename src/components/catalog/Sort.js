@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sortAdd, sortBy } from '../../actions';
+import { sortAdd, sortBy } from '../../actions/sortActions';
 
 export class Sort extends Component {
   selectHandler = e => {
