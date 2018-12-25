@@ -30,3 +30,10 @@ export const FETCH_CART = 'fetch_cart';
 export const ADD_TO_CART = 'add_to_cart';
 export const DELETE_FROM_CART = 'delete_from_cart';
 export const CART_CLEAR = 'cart_clear';
+export const CART_SUBMIT = 'cart_submit';
+
+export const ADD_FIRSTNAME = 'add_firstname';
+export const ADD_LASTNAME = 'add_lastname';
+export const ADD_PHONE = 'add_phone';
+export const ADD_EMAIL = 'add_email';
+export const ADD_CITY = 'add_city';

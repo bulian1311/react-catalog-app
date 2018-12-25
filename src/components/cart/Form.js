@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {
+  addFirstname,
+  addLastname,
+  addPhone,
+  addEmail,
+  addCity
+} from '../../actions/userActions';
 
 export class Form extends Component {
   render() {
+    const { dispatch, firstName, lastName, phone, email, city } = this.props;
     return (
       <form>
         <div className="form-row">
           <div className="col-md-6">
             <div className="form-group input-group">
               <input
+                onChange={e => dispatch(addFirstname(e.target.value))}
+                value={firstName}
                 type="text"
                 className="form-control"
                 placeholder="Имя..."
@@ -24,6 +35,8 @@ export class Form extends Component {
           <div className="col-md-6">
             <div className="form-group input-group">
               <input
+                onChange={e => dispatch(addLastname(e.target.value))}
+                value={lastName}
                 type="text"
                 className="form-control"
                 placeholder="Фамилия..."
@@ -39,9 +52,12 @@ export class Form extends Component {
 
         <div className="form-group input-group">
           <input
+            onChange={e => dispatch(addPhone(e.target.value))}
+            value={phone}
             type="text"
             className="form-control"
-            placeholder="Телефон..."
+            placeholder="8(999)123-56-78"
+            required
           />
           <div className="input-group-append">
             <span className="input-group-text" id="basic-addon2">
@@ -51,7 +67,14 @@ export class Form extends Component {
         </div>
 
         <div className="form-group input-group">
-          <input type="email" className="form-control" placeholder="Email..." />
+          <input
+            onChange={e => dispatch(addEmail(e.target.value))}
+            value={email}
+            type="email"
+            className="form-control"
+            placeholder="test@email.ru"
+            required
+          />
           <div className="input-group-append">
             <span className="input-group-text" id="basic-addon2">
               <i className="fas fa-envelope" />
@@ -60,7 +83,13 @@ export class Form extends Component {
         </div>
 
         <div className="form-group input-group">
-          <input type="text" className="form-control" placeholder="Город..." />
+          <input
+            onChange={e => dispatch(addCity(e.target.value))}
+            value={city}
+            type="text"
+            className="form-control"
+            placeholder="Город..."
+          />
           <div className="input-group-append">
             <span className="input-group-text" id="basic-addon2">
               <i className="fas fa-city" />
@@ -72,4 +101,10 @@ export class Form extends Component {
   }
 }
 
-export default Form;
+const mapStateToProps = state => {
+  const { firstName, lastName, phone, email, city } = state.user;
+
+  return { firstName, lastName, phone, email, city };
+};
+
+export default connect(mapStateToProps)(Form);

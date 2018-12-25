@@ -8,6 +8,7 @@ import categoryReducer from './categoryReducer';
 import filterReducer from './filterReducer';
 import sortReducer from './sortReducer';
 import cartReducer from './cartReducer';
+import userReducer from './userReducer';
 
 export default combineReducers({
   products: productReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   search: searchReducer,
   filter: filterReducer,
   sort: sortReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  user: userReducer
 });

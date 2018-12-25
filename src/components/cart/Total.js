@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Form from './Form';
-import { cartClear } from '../../actions';
+import { cartSubmit, cartClear } from '../../actions';
 
 export class Total extends Component {
+  buttonSubmitClick = () => {
+    const { dispatch, user, cart } = this.props;
+    dispatch(cartSubmit(cart, user));
+  };
+
   render() {
     const { cart, dispatch } = this.props;
     return (
@@ -20,7 +25,10 @@ export class Total extends Component {
           </p>
           <Form />
           <div className="">
-            <div className="btn btn-outline-success btn-lg btn-block mt-4">
+            <div
+              onClick={this.buttonSubmitClick}
+              className="btn btn-outline-success btn-lg btn-block mt-4"
+            >
               <b>
                 <i className="fas fa-money-bill fa-lg mr-2" />
                 Оформить заказ
@@ -43,7 +51,8 @@ export class Total extends Component {
 }
 
 const mapStateToProps = state => {
-  return { cart: state.cart };
+  const { cart, user } = state;
+  return { cart, user };
 };
 
 export default connect(mapStateToProps)(Total);

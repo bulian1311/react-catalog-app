@@ -23,7 +23,8 @@ import {
   FETCH_CART,
   ADD_TO_CART,
   DELETE_FROM_CART,
-  CART_CLEAR
+  CART_CLEAR,
+  CART_SUBMIT
 } from './types';
 
 const api = axios.create({ baseURL: 'http://magmer-api.herokuapp.com/' });
@@ -220,4 +221,15 @@ export const fetchCart = () => dispatch => {
   }
 
   dispatch({ type: FETCH_CART, payload: cart });
+};
+
+export const cartSubmit = (cart, user) => async dispatch => {
+  let res = await axios.post('http://magmer-cart.herokuapp.com/', {
+    cart,
+    user
+  });
+  if (res.data.msg === 'success') {
+    localStorage.removeItem('magmer-cart');
+    dispatch({ type: CART_SUBMIT, payload: res.data });
+  }
 };
