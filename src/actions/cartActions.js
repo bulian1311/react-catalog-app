@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { magmerCart } from './axios';
 import {
   FETCH_CART,
   ADD_TO_CART,
@@ -73,7 +73,7 @@ export const fetchCart = () => dispatch => {
 };
 
 export const cartSubmit = (cart, user) => async dispatch => {
-  let res = await axios.post('http://magmer-cart.herokuapp.com/', {
+  let res = await magmerCart.post('/', {
     cart,
     user
   });
