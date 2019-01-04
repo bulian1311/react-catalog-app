@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../common/Navbar';
+import Form from './Form';
 
 export class Landing extends Component {
   render() {
@@ -12,44 +13,51 @@ export class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-10 mx-auto">
-                <div className="jumbotron">
+                <div className="jumbotron text-center">
                   <img
                     className="img-fluid d-block mx-auto mb-5"
                     src="/img/logo.png"
                     alt="Magmer"
                   />
-                  <h2>About this page</h2>
+
+                  <h2>О нас</h2>
                   <p className="lead">
-                    This is a great place to talk about your webpage. This
-                    template is purposefully unstyled so you can use it as a
-                    boilerplate or starting point for you own landing page
-                    designs! This template features:
+                    Надоели скучные праздники, которые заключаются только в
+                    поедании калорийных блюд? Хотите действительно ярких
+                    впечатлений и мероприятие, которое запомнится каждому
+                    присутствующему? Ломаете голову, какими развлечениями
+                    удивить гостей? Все вопросы отойдут на второй план если
+                    обратитесь в наш магазин мероприятий! Мы поможем воплотить
+                    ваши мечты и организовать действительно увлекательные,
+                    креативные развлечения! Хороший праздник вызывает массу
+                    неповторимых эмоций и позволяет наслаждаться общением с
+                    другими людьми. Даже серьёзные проблемы, существующие в
+                    обыденной жизни, отходят на второй план в атмосфере
+                    праздничного, радостного настроения! Желая произвести новое,
+                    оригинальное наполнение праздника, спешите выбрать
+                    интересный аттракцион в компании Magmer.
                   </p>
-                  <ul>
-                    <li>
-                      Clickable nav links that smooth scroll to page sections
-                    </li>
-                    <li>
-                      Responsive behavior when clicking nav links perfect for a
-                      one page website
-                    </li>
-                    <li>
-                      Bootstrap's scrollspy feature which highlights which
-                      section of the page you're on in the navbar
-                    </li>
-                    <li>
-                      Minimal custom CSS so you are free to explore your own
-                      unique design options
-                    </li>
-                  </ul>
-                  <div className="d-flex justify-content-center">
-                    <Link
-                      className="btn btn-outline-primary btn-lg mt-5"
-                      to="/catalog"
-                    >
-                      Перейти в каталог
-                    </Link>
-                  </div>
+                  <h3>Преимущества Magmer</h3>
+                  <p className="lead">
+                    Воспользовавшись услугами магазина мероприятий, вы
+                    ограждаете себя от многих проблем, связанных с покупкой,
+                    проверкой, а главное, грамотным хранением приобретённого
+                    товара. Ведь многие аттракционы имеют приличные габариты и
+                    требуют выполнения определённых правил, чтобы оставаться
+                    исправными и в надлежащем виде. Сохранность требует
+                    специального помещения и времени для обслуживания. Мы сдаём
+                    в аренду аттракционы как для детских, так и взрослых
+                    праздников. Просмотрев каталог и пообщавшись с персоналом,
+                    вы сможете определиться с наиболее подходящим товаром.
+                  </p>
+
+                  <Link
+                    className="btn btn-outline-primary btn-lg btn-block mt-5"
+                    to="/catalog"
+                  >
+                    <i className="fas fa-th-list fa-lg mr-3" />
+                    <b>Перейти в каталог</b>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -61,13 +69,9 @@ export class Landing extends Component {
             <div className="row">
               <div className="col-lg-10 mx-auto">
                 <div className="jumbotron">
-                  <h2>Contact us</h2>
-                  <p className="lead">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Vero odio fugiat voluptatem dolor, provident officiis, id
-                    iusto! Obcaecati incidunt, qui nihil beatae magnam et
-                    repudiandae ipsa exercitationem, in, quo totam.
-                  </p>
+                  <h2 className="text-center">Свяжитесь с нами</h2>
+                  <br />
+                  <Form />
                 </div>
               </div>
             </div>
