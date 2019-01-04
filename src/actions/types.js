@@ -32,6 +32,7 @@ export const DELETE_FROM_CART = 'delete_from_cart';
 export const CART_CLEAR = 'cart_clear';
 export const CART_SUBMIT = 'cart_submit';
 
+export const FETCH_USER = 'get_user';
 export const ADD_FIRSTNAME = 'add_firstname';
 export const ADD_LASTNAME = 'add_lastname';
 export const ADD_PHONE = 'add_phone';

@@ -10,19 +10,18 @@ import {
 
 export class Form extends Component {
   render() {
-    const { dispatch, firstName, lastName, phone, email, city } = this.props;
+    const { user, dispatch } = this.props;
     return (
-      <form>
+      <div>
         <div className="form-row">
           <div className="col-md-6">
             <div className="form-group input-group">
               <input
-                onChange={e => dispatch(addFirstname(e.target.value))}
-                value={firstName}
+                onChange={e => dispatch(addFirstname(e.target.value, user))}
+                value={user.firstName}
                 type="text"
                 className="form-control"
                 placeholder="Имя..."
-                required
               />
               <div className="input-group-append">
                 <span className="input-group-text">
@@ -35,8 +34,8 @@ export class Form extends Component {
           <div className="col-md-6">
             <div className="form-group input-group">
               <input
-                onChange={e => dispatch(addLastname(e.target.value))}
-                value={lastName}
+                onChange={e => dispatch(addLastname(e.target.value, user))}
+                value={user.lastName}
                 type="text"
                 className="form-control"
                 placeholder="Фамилия..."
@@ -52,12 +51,11 @@ export class Form extends Component {
 
         <div className="form-group input-group">
           <input
-            onChange={e => dispatch(addPhone(e.target.value))}
-            value={phone}
+            onChange={e => dispatch(addPhone(e.target.value, user))}
+            value={user.phone}
             type="text"
             className="form-control"
             placeholder="8(999)123-56-78"
-            required
           />
           <div className="input-group-append">
             <span className="input-group-text" id="basic-addon2">
@@ -68,12 +66,11 @@ export class Form extends Component {
 
         <div className="form-group input-group">
           <input
-            onChange={e => dispatch(addEmail(e.target.value))}
-            value={email}
+            onChange={e => dispatch(addEmail(e.target.value, user))}
+            value={user.email}
             type="email"
             className="form-control"
             placeholder="test@email.ru"
-            required
           />
           <div className="input-group-append">
             <span className="input-group-text" id="basic-addon2">
@@ -84,8 +81,8 @@ export class Form extends Component {
 
         <div className="form-group input-group">
           <input
-            onChange={e => dispatch(addCity(e.target.value))}
-            value={city}
+            onChange={e => dispatch(addCity(e.target.value, user))}
+            value={user.city}
             type="text"
             className="form-control"
             placeholder="Город..."
@@ -96,15 +93,15 @@ export class Form extends Component {
             </span>
           </div>
         </div>
-      </form>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { firstName, lastName, phone, email, city } = state.user;
+  const { user } = state;
 
-  return { firstName, lastName, phone, email, city };
+  return { user };
 };
 
 export default connect(mapStateToProps)(Form);
