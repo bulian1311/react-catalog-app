@@ -38,3 +38,5 @@ export const ADD_LASTNAME = 'add_lastname';
 export const ADD_PHONE = 'add_phone';
 export const ADD_EMAIL = 'add_email';
 export const ADD_CITY = 'add_city';
+export const ADD_MESSAGE = 'add_message';
+export const MESSAGE_SUBMIT = 'message_submit';

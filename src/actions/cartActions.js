@@ -1,4 +1,4 @@
-import { magmerCart } from './axios';
+import { magmerMailer } from './axios';
 import {
   FETCH_CART,
   ADD_TO_CART,
@@ -73,10 +73,15 @@ export const fetchCart = () => dispatch => {
 };
 
 export const cartSubmit = (cart, user) => async dispatch => {
-  let res = await magmerCart.post('/', {
+  if (!user.phone || !user.firstName || !user.email) {
+    return;
+  }
+
+  let res = await magmerMailer.post('/cart', {
     cart,
     user
   });
+
   if (res.data.msg === 'success') {
     localStorage.removeItem('magmer-cart');
     dispatch({ type: CART_SUBMIT, payload: res.data });

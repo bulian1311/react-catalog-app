@@ -5,7 +5,8 @@ import {
   addLastname,
   addPhone,
   addEmail,
-  addCity
+  addMessage,
+  messageSubmit
 } from '../../actions/userActions';
 
 export class Form extends Component {
@@ -79,13 +80,19 @@ export class Form extends Component {
           </div>
         </div>
         <br />
-        <textarea class="form-control" placeholder="Сообщение..." rows="3" />
+        <textarea
+          onChange={e => dispatch(addMessage(e.target.value, user))}
+          className="form-control"
+          placeholder="Сообщение..."
+          value={user.message}
+          rows="3"
+        />
         <br />
         <div
-          onClick=""
+          onClick={() => dispatch(messageSubmit(user))}
           className="btn btn-outline-success btn-lg btn-block mt-4"
         >
-          <i class="far fa-envelope mr-2 fa-lg" />
+          <i className="far fa-envelope mr-2 fa-lg" />
           <b>Отправить</b>
         </div>
       </div>

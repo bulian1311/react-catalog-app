@@ -4,7 +4,9 @@ import {
   ADD_PHONE,
   ADD_EMAIL,
   ADD_CITY,
-  FETCH_USER
+  ADD_MESSAGE,
+  FETCH_USER,
+  MESSAGE_SUBMIT
 } from '../actions/types';
 
 const initialState = {
@@ -12,7 +14,8 @@ const initialState = {
   lastName: '',
   phone: '',
   email: '',
-  city: ''
+  city: '',
+  message: ''
 };
 
 export default function(state = initialState, action) {
@@ -33,6 +36,12 @@ export default function(state = initialState, action) {
       return action.payload;
 
     case FETCH_USER:
+      return action.payload;
+
+    case ADD_MESSAGE:
+      return action.payload;
+
+    case MESSAGE_SUBMIT:
       return action.payload;
 
     default:

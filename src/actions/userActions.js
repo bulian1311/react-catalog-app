@@ -1,10 +1,13 @@
+import { magmerMailer } from './axios';
 import {
   ADD_FIRSTNAME,
   ADD_LASTNAME,
   ADD_PHONE,
   ADD_EMAIL,
   ADD_CITY,
-  FETCH_USER
+  FETCH_USER,
+  ADD_MESSAGE,
+  MESSAGE_SUBMIT
 } from './types';
 
 export const addFirstname = (firstName, user) => dispatch => {
@@ -38,6 +41,12 @@ export const addCity = (city, user) => dispatch => {
   dispatch({ type: ADD_CITY, payload: newUser });
 };
 
+export const addMessage = (message, user) => dispatch => {
+  const newUser = { ...user, message };
+  localStorage.setItem('magmer-user', JSON.stringify(newUser));
+  dispatch({ type: ADD_MESSAGE, payload: newUser });
+};
+
 export const fetchUser = () => dispatch => {
   let user = JSON.parse(localStorage.getItem('magmer-user'));
   if (!user) {
@@ -51,4 +60,20 @@ export const fetchUser = () => dispatch => {
   }
 
   dispatch({ type: FETCH_USER, payload: user });
+};
+
+export const messageSubmit = user => async dispatch => {
+  if (!user.phone || !user.firstName || !user.email || !user.message) {
+    return;
+  }
+
+  let res = await magmerMailer.post('/message', {
+    user
+  });
+
+  if (res.data.msg === 'success') {
+    const newUser = { ...user, message: '' };
+    localStorage.setItem('magmer-user', newUser);
+    dispatch({ type: MESSAGE_SUBMIT, payload: newUser });
+  }
 };
