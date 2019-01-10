@@ -8,10 +8,22 @@ import {
   addMessage,
   messageSubmit
 } from '../../actions/userActions';
+import { withAlert } from 'react-alert';
 
 export class Form extends Component {
+  sendMessageButton = () => {
+    const { user, dispatch, alert } = this.props;
+
+    if (!user.phone || !user.firstName || !user.email || !user.message) {
+      alert.error('Заполните поля.');
+      return;
+    }
+    dispatch(messageSubmit(user));
+    alert.info('Сообщение отправлено.');
+  };
+
   render() {
-    const { dispatch, user } = this.props;
+    const { user, dispatch } = this.props;
     return (
       <div>
         <div className="form-row">
@@ -89,7 +101,7 @@ export class Form extends Component {
         />
         <br />
         <div
-          onClick={() => dispatch(messageSubmit(user))}
+          onClick={this.sendMessageButton}
           className="btn btn-outline-success btn-lg btn-block mt-4"
         >
           <i className="far fa-envelope mr-2 fa-lg" />
@@ -105,4 +117,4 @@ const mapSteteToProps = state => {
   return { user };
 };
 
-export default connect(mapSteteToProps)(Form);
+export default connect(mapSteteToProps)(withAlert(Form));

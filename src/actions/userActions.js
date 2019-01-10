@@ -66,14 +66,12 @@ export const messageSubmit = user => async dispatch => {
   if (!user.phone || !user.firstName || !user.email || !user.message) {
     return;
   }
-
   let res = await magmerMailer.post('/message', {
     user
   });
-
   if (res.data.msg === 'success') {
     const newUser = { ...user, message: '' };
-    localStorage.setItem('magmer-user', newUser);
+    localStorage.setItem('magmer-user', JSON.stringify(newUser));
     dispatch({ type: MESSAGE_SUBMIT, payload: newUser });
   }
 };

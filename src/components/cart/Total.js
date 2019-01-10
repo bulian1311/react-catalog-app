@@ -2,15 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Form from './Form';
 import { cartSubmit, cartClear } from '../../actions/cartActions';
+import { withAlert } from 'react-alert';
 
 export class Total extends Component {
   buttonSubmitClick = () => {
-    const { dispatch, user, cart } = this.props;
+    const { dispatch, user, cart, alert } = this.props;
     dispatch(cartSubmit(cart, user));
+    if (!user.phone || !user.firstName || !user.email) {
+      alert.error('Заполните поля.');
+      return;
+    }
+    alert.info('Заказ отправлен на обработку.');
   };
 
   render() {
-    const { cart, dispatch } = this.props;
+    const { cart, dispatch, alert } = this.props;
     return (
       <div className="card mt-4 bg-light">
         <div className="card-body">
@@ -35,7 +41,10 @@ export class Total extends Component {
               </b>
             </div>
             <div
-              onClick={() => dispatch(cartClear())}
+              onClick={() => {
+                dispatch(cartClear());
+                alert.success('Корзина очищена.');
+              }}
               className="btn btn-outline-danger btn-sm btn-block mt-4"
             >
               <b>
@@ -55,4 +64,4 @@ const mapStateToProps = state => {
   return { cart, user };
 };
 
-export default connect(mapStateToProps)(Total);
+export default connect(mapStateToProps)(withAlert(Total));

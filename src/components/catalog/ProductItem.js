@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../../actions/cartActions';
+import { withAlert } from 'react-alert';
 
 class ProductItem extends React.Component {
   render() {
-    const { dispatch, product, cart } = this.props;
+    const { dispatch, product, cart, alert } = this.props;
     return (
       <div className="col-lg-4 col-md-4 col-sm-6 product-item">
         <div className="card h-100">
@@ -27,9 +28,11 @@ class ProductItem extends React.Component {
               {product.price}
               <i className="fas fa-ruble-sign ml-2 fa-sm" />
             </h5>
-
             <div
-              onClick={() => dispatch(addToCart(product, cart))}
+              onClick={() => {
+                dispatch(addToCart(product, cart));
+                alert.success('Товар добавлен в корзину.');
+              }}
               className="btn btn-outline-primary btn-sm mt-auto"
             >
               <i className="fas fa-cart-arrow-down fa-lg mr-2" />
@@ -46,4 +49,4 @@ const mapStateToProps = state => {
   return { cart: state.cart };
 };
 
-export default connect(mapStateToProps)(ProductItem);
+export default connect(mapStateToProps)(withAlert(ProductItem));
