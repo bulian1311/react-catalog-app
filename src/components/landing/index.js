@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../common/Navbar';
 import Form from './Form';
-import { Provider as AlertProvider } from 'react-alert';
-import AlertTemplate from '../common/AlertTemplate';
 
 export class Landing extends Component {
   render() {
@@ -73,13 +71,7 @@ export class Landing extends Component {
                 <div className="jumbotron">
                   <h2 className="text-center">Свяжитесь с нами</h2>
                   <br />
-                  <AlertProvider
-                    template={AlertTemplate}
-                    timeout={3000}
-                    position="top center"
-                  >
-                    <Form />
-                  </AlertProvider>
+                  <Form />
                 </div>
               </div>
             </div>

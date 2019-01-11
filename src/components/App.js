@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Router from './Router';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from './common/AlertTemplate';
 
 import { fetchCategories } from '../actions/categoryActions';
 import { fetchProducers } from '../actions/producerActions';
@@ -22,7 +24,15 @@ export class App extends Component {
   };
 
   render() {
-    return <Router />;
+    return (
+      <AlertProvider
+        template={AlertTemplate}
+        timeout={2000}
+        position="top center"
+      >
+        <Router />
+      </AlertProvider>
+    );
   }
 }
 

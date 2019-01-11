@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withAlert } from 'react-alert';
 import Navbar from '../common/Navbar';
 import Carousel from './Carousel';
 import { addToCart } from '../../actions/cartActions';
@@ -32,7 +33,7 @@ export class Details extends Component {
 
   render() {
     const { product } = this.props.location.state;
-    const { dispatch, cart } = this.props;
+    const { dispatch, cart, alert } = this.props;
     return (
       <div className="detail">
         <Navbar />
@@ -77,7 +78,10 @@ export class Details extends Component {
                 </div>
               </div>
               <div
-                onClick={e => dispatch(addToCart(product, cart))}
+                onClick={e => {
+                  dispatch(addToCart(product, cart));
+                  alert.success('Товар добавлен в корзину.');
+                }}
                 className="btn btn-lg btn-outline-primary btn-block mt-4"
               >
                 <i className="fas fa-cart-arrow-down fa-lg mr-2" />
@@ -95,4 +99,4 @@ const mapStateToProps = state => {
   return { cart: state.cart };
 };
 
-export default connect(mapStateToProps)(Details);
+export default connect(mapStateToProps)(withAlert(Details));

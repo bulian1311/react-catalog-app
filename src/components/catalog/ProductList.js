@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProductItem from './ProductItem';
 import { loadMore } from '../../actions/visibleActions';
-import { Provider as AlertProvider } from 'react-alert';
-import AlertTemplate from '../common/AlertTemplate';
 
 export class ProductList extends Component {
   renderList = data => {
@@ -16,16 +14,7 @@ export class ProductList extends Component {
     }
 
     return products.slice(0, this.props.visible).map(product => {
-      return (
-        <AlertProvider
-          key={product._id}
-          template={AlertTemplate}
-          timeout={2000}
-          position="top center"
-        >
-          <ProductItem key={product._id} product={product} />
-        </AlertProvider>
-      );
+      return <ProductItem key={product._id} product={product} />;
     });
   };
 
