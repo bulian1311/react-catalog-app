@@ -12,7 +12,7 @@ export class InfoBar extends Component {
             <b className="text-secondary">
               <a className="text-secondary" href="tel:+7(915)275-44-55">
                 <i className="fas fa-mobile-alt fa-lg mr-2" />
-                +7(915)275-44-55
+                +7(985)987-99-69
               </a>
             </b>
           </span>
