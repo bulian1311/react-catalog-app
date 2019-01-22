@@ -100,6 +100,7 @@ class Sidebar extends React.Component {
   };
 
   renderProducers = () => {
+    const { producers, store } = this.props;
     return (
       <div className="card collapsed">
         <div
@@ -123,28 +124,39 @@ class Sidebar extends React.Component {
           aria-labelledby="headingTwo"
           data-parent="#accordionExample"
         >
-          <div className="card-body">
-            {this.props.producers.map(producer => {
-              return (
-                <div
-                  key={producer._id}
-                  className="custom-control custom-checkbox"
-                >
-                  <input
-                    type="checkbox"
-                    className="custom-control-input"
-                    id={producer._id}
-                  />
-                  <label
-                    className="custom-control-label"
-                    htmlFor={producer._id}
-                  >
-                    {producer.name}
-                  </label>
-                </div>
-              );
-            })}
-          </div>
+          <ul
+            style={{ maxHeight: 450, overflow: 'auto' }}
+            className="list-group"
+          >
+            {store.length > 0
+              ? producers.map(producer => {
+                  return (
+                    <li key={producer._id} className="list-group-item">
+                      <div className="custom-control custom-checkbox">
+                        <input
+                          onChange={this.handleChange}
+                          value={producer._id}
+                          checked={
+                            this.isChecked(producer._id, this.props.filter)
+                              ? true
+                              : false
+                          }
+                          type="checkbox"
+                          className="custom-control-input"
+                          id={producer._id}
+                        />
+                        <label
+                          className="custom-control-label producer"
+                          htmlFor={producer._id}
+                        >
+                          {producer.name}
+                        </label>
+                      </div>
+                    </li>
+                  );
+                })
+              : ''}
+          </ul>
         </div>
       </div>
     );

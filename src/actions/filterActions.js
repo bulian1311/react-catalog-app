@@ -18,7 +18,9 @@ export const filterDelete = (val, filter) => dispatch => {
 export const filterByCategory = (filter, store) => dispatch => {
   if (filter.length > 0) {
     const show = store.filter(product => {
-      return filter.includes(product.category);
+      return (
+        filter.includes(product.category) || filter.includes(product.producer)
+      );
     });
 
     dispatch({ type: FILTER_BY_CATEGORY, payload: show });
